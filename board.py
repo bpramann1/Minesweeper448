@@ -39,3 +39,14 @@ class Board(QWidget):
               break
 
         self.setLayout(self.boardLayout)
+
+    def getNeighbors(self, row, col):
+      indices = []
+      for i in [row - 1, row, row + 1]:
+        for j in [col - 1, col, col + 1]:
+          validRow = not (i < 0 or i >= self.rows)
+          validCol = not (j < 0 or j >= self.cols)
+          if validRow and validCol:
+            indices.append((i,j))
+      return indices
+    
