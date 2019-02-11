@@ -52,22 +52,21 @@ class Game(QWidget):
 
     def gamestart(self):
         if len(self.rowInput.text()) and len(self.colInput.text()) and len(self.mineInput.text()) > 0 :
-            okPressed = True
-            rows = int(self.rowInput.text())
-            cols = int(self.colInput.text())
-            self.layout.addWidget(self.initTimerWidget())   #Executes the initTimerWidget and adds it to the main widget
-            self.board = Board(rows, cols)
-            self.layout.addWidget(self.board)
+            if (int(self.rowInput.text()) and int(self.colInput.text()) > 1) and (int(self.mineInput.text()) < (int(self.rowInput.text())*int(self.colInput.text()))):
+                okPressed = True
+                self.startTimer()
+                rows = int(self.rowInput.text())
+                cols = int(self.colInput.text())
+                self.layout.addWidget(self.initTimerWidget())   #Executes the initTimerWidget and adds it to the main widget
+                self.board = Board(rows, cols)
+                self.layout.addWidget(self.board)
 
     def initTimerWidget(self):  #Initializes a timer widget which has a horizontal box layout and adds a buttona dn label
         timerWidget = QWidget()
         timerLayout = QHBoxLayout()
-        timerButton = QPushButton('Start Timer')
         self.timerLabel = QLabel('Time: 00:00')
         timerWidget.setLayout(timerLayout)
-        timerLayout.addWidget(timerButton)
         timerLayout.addWidget(self.timerLabel)
-        timerButton.clicked.connect(self.startTimer)
         return timerWidget
 
     def startTimer(self):   #Connected to the start timer button, initializes a QTime to be decreased and makes a timer event that occurs every 1000 ms
