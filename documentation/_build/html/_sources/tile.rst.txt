@@ -1,5 +1,5 @@
-board
+tile
 =======================================
-.. automodule:: board
+.. automodule:: tile
     :members:
     :undoc-members:

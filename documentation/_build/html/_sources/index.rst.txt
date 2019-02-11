@@ -10,7 +10,10 @@ Welcome to Minesweeper's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   Board
+   main
+   board
+   game
+   tile
 
 
 Indices and tables

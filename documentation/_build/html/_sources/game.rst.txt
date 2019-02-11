@@ -1,5 +1,5 @@
-board
+game
 =======================================
-.. automodule:: board
+.. automodule:: game
     :members:
     :undoc-members:
