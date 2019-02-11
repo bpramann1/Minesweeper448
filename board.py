@@ -50,3 +50,4 @@ class Board(QWidget):
             indices.append((i,j))
       return indices
     
+
