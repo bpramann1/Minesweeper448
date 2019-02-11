@@ -6,22 +6,36 @@ from tile import Tile
 
 
 class Board(QWidget):
-    def __init__(self, rows, cols):
+    def __init__(self, rows, cols, count):
         super().__init__()
 
         self.rows = rows
         self.cols = cols
+        self.tiles = [][]
+        self.minesIndices = []
+        self.mineCount = count
+        self.flagCount = 0
         self.boardLayout = QGridLayout() #Loads a grid layout
-        self.setLayout(self.boardLayout)
-        self.initBoard()
 
-    def initBoard(self):    #Initializes a board widget
-        self.setStyleSheet(StyleSheet)
-        self.boardLayout.setHorizontalSpacing(0)
-        self.boardLayout.setVerticalSpacing(0)
-        self.board = [] #creates a two-dimensional array for the board to exist in
-        for i in range(0,self.cols):
-            self.board.append([])
-            for j in range(0,self.rows):
-                self.board[i].append(QPushButton(""))
-                self.boardLayout.addWidget(self.board[i][j],i,j)
+        # create the list of rows * cols unique tiles
+        for i in range(0, rows):
+          self.tiles.append([])
+          for j in range(0, cols):
+            self.tiles[i].append(Tile())
+            self.boardLayout.addWidget(self.tiles[i][j], i, j)
+        
+        # assign n tiles to be mines
+        for n in range(0, count):
+          while True:
+            i = random.randint(0, rows - 1)
+            j = random.randint(0, cols - 1)
+            if not self.tiles[i][j].isMine():
+              self.tiles[i].setMine()
+              self.mineIndices.append((i,j))
+              print("Setting mine at: %d, %d" % (i, j)) 
+              # increment the mine count on neighboring tiles
+              for x in self.getNeighbors(i):
+                self.tiles[x].incCount()
+              break
+
+        self.setLayout(self.boardLayout)
