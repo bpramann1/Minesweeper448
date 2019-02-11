@@ -1,4 +1,5 @@
 import sys
+import random
 from Styles import StyleSheet
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -6,13 +7,13 @@ from tile import Tile
 
 
 class Board(QWidget):
-    def __init__(self, rows, cols, count):
+    def __init__(self, rows, cols, count = 1):
         super().__init__()
 
         self.rows = rows
         self.cols = cols
-        self.tiles = [][]
-        self.minesIndices = []
+        self.tiles = []
+        self.mineIndices = []
         self.mineCount = count
         self.flagCount = 0
         self.boardLayout = QGridLayout() #Loads a grid layout
@@ -30,12 +31,12 @@ class Board(QWidget):
             i = random.randint(0, rows - 1)
             j = random.randint(0, cols - 1)
             if not self.tiles[i][j].isMine():
-              self.tiles[i].setMine()
+              self.tiles[i][j].setMine()
               self.mineIndices.append((i,j))
               print("Setting mine at: %d, %d" % (i, j)) 
               # increment the mine count on neighboring tiles
-              for x in self.getNeighbors(i):
-                self.tiles[x].incCount()
+              for (y, x) in self.getNeighbors(i, j):
+                self.tiles[y][x].incCount()
               break
 
         self.setLayout(self.boardLayout)
