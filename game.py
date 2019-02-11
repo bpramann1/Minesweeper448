@@ -1,6 +1,7 @@
 import sys
 from Styles import StyleSheet
 from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QIntValidator
 from PyQt5.QtCore import *
 from board import Board
 
@@ -30,6 +31,8 @@ class Game(QWidget):
         self.grid[0].append(QLabel('# of Rows'))
         inputLayout.addWidget(self.grid[0][0], 0, 0)
         self.rowInput = QLineEdit(self)
+        self.intValidator = QIntValidator(self)
+        self.rowInput.setValidator(self.intValidator)
         self.grid[0].append(self.rowInput)
         inputLayout.addWidget(self.grid[0][1], 0 , 1)
 
@@ -37,6 +40,7 @@ class Game(QWidget):
         self.grid[1].append(QLabel('# of Columns'))
         inputLayout.addWidget(self.grid[1][0], 1, 0)
         self.colInput = QLineEdit(self)
+        self.colInput.setValidator(self.intValidator)
         self.grid[1].append(self.colInput)
 
         inputLayout.addWidget(self.grid[1][1], 1, 1)
