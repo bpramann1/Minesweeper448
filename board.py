@@ -31,9 +31,9 @@ class Board(QWidget):
 
 
         # create the list of rows * cols unique tiles
-        for i in range( 0, rows ):
+        for i in range(0, self.rows):
             self.tiles.append( [] )
-            for j in range( 0, cols ):
+            for j in range(0, self.cols):
                 self.tiles[i].append( Tile(i, j) )
                 self.tiles[i][j].clicked.connect( self.leftClickHandler )
                 self.tiles[i][j].rightClicked.connect( self.rightClickHandler )
@@ -95,14 +95,21 @@ class Board(QWidget):
             print( "Unable to flip already visibile tile" )
         if self.tiles[i][j].isMine():
             print( "Mine uncovered" )
-            
+
     def rightClickHandler(self):
         sender = self.sender()
         (i, j) = sender.getIndices()
         self.minesFound += self.tiles[i][j].flagMine()
-        self.checkWin()
-
-    def checkWin(self):
         if self.minesFound == self.mineCount:
-            print('You won')
+            self.win()
+
+    def flipAll(self):
+        for i in range( 0, self.rows):
+            for j in range( 0, self.cols):
+                if not self.tiles[i][j].isMine():
+                    self.flip(i,j)
+    def win(self):
+        self.flipAll()
+        print('You won')
+
 
