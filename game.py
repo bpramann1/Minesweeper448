@@ -5,6 +5,14 @@ from PyQt5.QtCore import *
 from board import Board
 
 class Game(QWidget):
+    """Summary line.
+
+    Extended description of function.
+
+    Args:
+        rows (int): Description of rows
+        cols (int): Description of cols
+    """
     def __init__(self,rows,cols,count):
         super().__init__()
 

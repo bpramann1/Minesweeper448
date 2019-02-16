@@ -8,6 +8,14 @@ from PyQt5.QtGui import QIntValidator
 
 
 class MenuWindow(QWidget):
+    """Summary line.
+
+    Extended description of function.
+
+    Args:
+        rows (int): Description of rows
+        cols (int): Description of cols
+    """
     def __init__(self):
         super().__init__()
 
@@ -24,6 +32,7 @@ class MenuWindow(QWidget):
             if (int(self.rowInput.text()) and int(self.colInput.text()) > 1) and (int(self.mineInput.text()) < (int(self.rowInput.text())*int(self.colInput.text()))):
                 self.game = Game(int(self.rowInput.text()),int(self.colInput.text()),int(self.mineInput.text()))
                 self.game.show()
+                self.close()
 
 
     def getSize(self):

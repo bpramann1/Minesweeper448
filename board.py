@@ -29,6 +29,7 @@ class Board(QWidget):
         self.active = True
         self.boardLayout = QGridLayout() #Loads a grid layout
 
+
         # create the list of rows * cols unique tiles
         for i in range( 0, rows ):
             self.tiles.append( [] )
@@ -40,6 +41,8 @@ class Board(QWidget):
         # assign tiles to be mines
         self.setMines( count )
 
+        self.boardLayout.setSpacing(0)
+        self.boardLayout.setContentsMargins(0, 0, 0, 0)
         self.setLayout( self.boardLayout )
 
     def getNeighbors( self, row, col ):
