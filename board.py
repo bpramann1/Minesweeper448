@@ -24,7 +24,7 @@ class Board(QWidget):
         self.tiles = []
         self.mineIndices = []
         self.mineCount = count
-        self.flagCount = 0
+        self.minesFound = 0
         self.lost = False
         self.active = True
         self.boardLayout = QGridLayout() #Loads a grid layout
@@ -35,7 +35,8 @@ class Board(QWidget):
             self.tiles.append( [] )
             for j in range( 0, cols ):
                 self.tiles[i].append( Tile(i, j) )
-                self.tiles[i][j].clicked.connect( self.clickHandler )
+                self.tiles[i][j].clicked.connect( self.leftClickHandler )
+                self.tiles[i][j].rightClicked.connect( self.rightClickHandler )
                 self.boardLayout.addWidget( self.tiles[i][j], j, i )
 
         # assign tiles to be mines
@@ -85,7 +86,7 @@ class Board(QWidget):
                 self.flip( row, col )
         return temp
 
-    def clickHandler(self):
+    def leftClickHandler(self):
         sender = self.sender()
         (i, j) = sender.getIndices()
         print( "Click detected at %d, %d" % (i, j) )
@@ -94,3 +95,14 @@ class Board(QWidget):
             print( "Unable to flip already visibile tile" )
         if self.tiles[i][j].isMine():
             print( "Mine uncovered" )
+            
+    def rightClickHandler(self):
+        sender = self.sender()
+        (i, j) = sender.getIndices()
+        self.minesFound += self.tiles[i][j].flagMine()
+        self.checkWin()
+
+    def checkWin(self):
+        if self.minesFound == self.mineCount:
+            print('You won')
+
