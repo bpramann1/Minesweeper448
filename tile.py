@@ -2,6 +2,7 @@ import sys
 from Styles import StyleSheet
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
+from PyQt5 import QtGui
 
 class Tile(QPushButton):
     """Summary line.
@@ -13,9 +14,9 @@ class Tile(QPushButton):
         cols (int): Description of columns
     """
     def __init__( self, i, j ):
-        super().__init__("?")
+        super().__init__()
 
-        self.setStyleSheet("border: 1px solid black; height: 35px; width: 30px");
+        self.setStyleSheet("border: 1px solid black; height: 35px; width: 30px;")
         self.row = i
         self.col = j
         self.count = 0
@@ -52,9 +53,10 @@ class Tile(QPushButton):
 
     def update(self):
         if not self.visible:
-            self.setText( "?" )
+            self.setText("?")
         elif self.mine:
             self.setText( "M" )
+            self.setStyleSheet("border: 1px solid black; height: 35px; width: 30px; background-color: red;")
         else:
             self.setText( "%d" % self.count )
         return None
