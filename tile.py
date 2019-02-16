@@ -17,7 +17,6 @@ class Tile(QPushButton):
     """
     rightClicked = pyqtSignal()
     def __init__( self, i, j ):
-
         super().__init__()
 
         self.flagIcon = QtGui.QIcon(ICON_PATH)
@@ -53,6 +52,13 @@ class Tile(QPushButton):
         return self.mine
 
     def flip(self):
+        """Checks whether the tile has already been click and if not call update()
+
+        Args:
+
+        Returns:
+            bool: False if already clicked, True if not
+        """
         if self.visible:
             return False
         else:
@@ -61,7 +67,10 @@ class Tile(QPushButton):
             return True
 
     def update(self):
-        """Updates the state of the button. Is called on left click
+        """Updates the state of the button. Called if the tile was left clicked for the first time
+
+        Args:
+
         Returns:
             None: None
         """
@@ -78,6 +87,14 @@ class Tile(QPushButton):
         return self.visible
 
     def flagMine(self):
+        """Toggles the flag on the tile.
+
+        Args:
+
+        Returns:
+            Int: The number to increment the number of mines found, 1 if mine flagged, -1 if mine unflagged, 0 if not a mine
+
+        """
         if not self.flagged:
             self.setIcon(self.flagIcon)
             self.flagged = True
@@ -90,9 +107,16 @@ class Tile(QPushButton):
                 return -1;
         return 0;
 
-
-
     def mousePressEvent(self, event):
+        """Is called natively by buttons on mouse press.
+
+        Emits a rightClicked signal on right click and calls the normal QPushButton event system
+
+        Args:
+
+        Returns:
+
+        """
         if event.button() == Qt.RightButton:
             self.rightClicked.emit()
         QPushButton.mousePressEvent(self,event)
