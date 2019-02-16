@@ -7,7 +7,16 @@ from tile import Tile
 
 
 class Board(QWidget):
-    def __init__( self, rows, cols, count = 1 ):
+    """Object that contains a widget for the board that the user interacts with
+
+    Contains functions for detecting clicks at a location, setting mine locations and changing the state of a tile
+
+    Args:
+        rows (int): Number of rows
+        cols (int): Number of columns
+        count (int) : Number of Mines
+    """
+    def __init__( self, rows, cols, count ):
         super().__init__()
 
         self.rows = rows
@@ -27,7 +36,7 @@ class Board(QWidget):
                 self.tiles[i].append( Tile(i, j) )
                 self.tiles[i][j].clicked.connect( self.clickHandler )
                 self.boardLayout.addWidget( self.tiles[i][j], j, i )
-        
+
         # assign tiles to be mines
         self.setMines( count )
 
@@ -42,7 +51,7 @@ class Board(QWidget):
                 if validRow and validCol:
                     indices.append( (i, j) )
         return indices
-    
+
     def setMines( self, count ):
         for n in range( 0, count ):
             i = random.randint( 0, self.rows - 1 )
@@ -54,7 +63,7 @@ class Board(QWidget):
                 # increment the mine count on neighboring tiles
                 for (y, x) in self.getNeighbors( i, j ):
                   self.tiles[y][x].incCount()
-                break
+
         self.minesSet = True
 
     # returns True if Tile successfully flips, False if Tile is already flipped
@@ -62,7 +71,7 @@ class Board(QWidget):
     def flip( self, i, j ):
         # reveal tile and set temp to return value, True if flipped False if not
         temp = self.tiles[i][j].flip()
-       
+
         if not temp:
             return temp
         elif self.tiles[i][j].isMine():
@@ -82,4 +91,3 @@ class Board(QWidget):
             print( "Unable to flip already visibile tile" )
         if self.tiles[i][j].isMine():
             print( "Mine uncovered" )
-
