@@ -18,6 +18,8 @@ class Board(QWidget):
         count (int) : Number of Mines
     """
     endGame = pyqtSignal(str)
+    """ Communicates between game and board, emits signal on game end """
+
     def __init__( self, rows, cols, count, parent = None ):
         super().__init__()
 
@@ -48,6 +50,16 @@ class Board(QWidget):
         self.setLayout( self.boardLayout )
 
     def getNeighbors( self, row, col ):
+        """Returns the 8 cells surrounding the passed cell
+
+        Args:
+            row (int): row of cell to find neighbor for
+            col (str): column of cell to find neighbor for
+
+        Returns:
+            int[]: 8 row/col pairs for 8 cell neighbors
+
+        """
         indices = []
         for i in [ row - 1, row, row + 1 ]:
             validRow = not ( i < 0 or i >= self.rows )
@@ -58,6 +70,12 @@ class Board(QWidget):
         return indices
 
     def setMines(self, startingPoint):
+        """Populates board with mines
+
+        Args:
+            startingPoint (IDK): location of the first click
+
+        """
         spacing = 0.05
         handicapModifier = 0
         n = 0
@@ -82,6 +100,19 @@ class Board(QWidget):
     # returns True if Tile successfully flips, False if Tile is already flipped
     # returns True even if Tile is a mine
     def flip( self, i, j ):
+        """Flips tile at passed location
+
+        (What does flipping consist of? Might want to make this more specific.)
+        (I have no idea about how returns work, leaving that for someone else to fill in)
+
+        Args:
+            i (int): row of tile to flip
+            j (str): col of tile to flip
+
+        Returns:
+            TYPE: DESCRIPTION
+
+        """
         # reveal tile and set temp to return value, True if flipped False if not
         temp = self.tiles[i][j].flip()
 
@@ -96,7 +127,18 @@ class Board(QWidget):
         return temp
 
     def leftClickHandler(self):
+        """Run with a tile is left clicked, calls various functions based on gamestate and state of tile
 
+        (Not sure about how we should denote no returns but a change of program state)
+
+        Args:
+            arg1 (int): Description of arg1
+            arg2 (str): Description of arg2
+
+        Returns:
+            bool: Description of return value
+
+        """
         sender = self.sender()
         (i, j) = sender.getIndices()
         if not self.minesSet:
@@ -109,6 +151,18 @@ class Board(QWidget):
             self.lose()
 
     def rightClickHandler(self):
+        """Run with a tile is right clicked, calls various functions based on gamestate and state of tile
+
+        (Same as leftclick, not sure how we want to denote a change of gamestate but no return)
+
+        Args:
+            arg1 (int): Description of arg1
+            arg2 (str): Description of arg2
+
+        Returns:
+            bool: Description of return value
+
+        """
         sender = self.sender()
         (i, j) = sender.getIndices()
         self.minesFound += self.tiles[i][j].flagMine()
@@ -116,6 +170,12 @@ class Board(QWidget):
             self.win()
 
     def flipAll(self, won):
+        """Flips all tiles on the board
+
+        Args:
+            won (bool): true if game is won, false otherwise
+
+        """
         for i in range( 0, self.rows):
             for j in range( 0, self.cols):
                 if won:
@@ -124,10 +184,19 @@ class Board(QWidget):
                 else:
                     self.flip(i,j)
     def win(self):
+        """Called when game is won, flips all tiles and sets gamestate to won
+
+        (Idk if sets gamestate is the right phrase there, might want to change it)
+
+        """
         self.flipAll(True)
         self.endGame.emit('won')
+
     def lose(self):
+        """Called when game is lost, flips all tiles and sets gamestate to lost
+
+        (Idk if sets gamestate is the right phrase there, might want to change it)
+
+        """
         self.flipAll(False)
         self.endGame.emit('lost')
-
-

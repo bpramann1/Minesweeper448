@@ -14,7 +14,7 @@ Welcome to Minesweeper's documentation!
    board
    game
    tile
-
+   menuWindow
 
 Indices and tables
 ==================

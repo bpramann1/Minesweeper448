@@ -37,8 +37,117 @@
 <span id="tile"></span><h1>tile<a class="headerlink" href="#module-tile" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="tile.Tile">
-<em class="property">class </em><code class="descclassname">tile.</code><code class="descname">Tile</code><span class="sig-paren">(</span><em>rows</em>, <em>cols</em><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">tile.</code><code class="descname">Tile</code><span class="sig-paren">(</span><em>i</em>, <em>j</em><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tile button on the minesweeper board</p>
+<p>Holds all data about the tile</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>i</strong> (<em>int</em>) – The row of the tile</li>
+<li><strong>j</strong> (<em>int</em>) – The column of the tile</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="tile.Tile.flagMine">
+<code class="descname">flagMine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.flagMine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggles the flag on the tile.</p>
+<p>Args:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The number to increment the number of mines found, 1 if mine flagged, -1 if mine unflagged, 0 if not a mine</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.flip">
+<code class="descname">flip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.flip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the tile has already been click and if not call update()</p>
+<p>Args:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">False if already clicked, True if not</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.getCount">
+<code class="descname">getCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.getCount" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.getIndices">
+<code class="descname">getIndices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.getIndices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.incCount">
+<code class="descname">incCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.incCount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.isFlipped">
+<code class="descname">isFlipped</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.isFlipped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.isMine">
+<code class="descname">isMine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.isMine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.mousePressEvent">
+<code class="descname">mousePressEvent</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.mousePressEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is called natively by buttons on mouse press.</p>
+<p>Emits a rightClicked signal on right click and calls the normal QPushButton event system</p>
+<p>Args:</p>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tile.Tile.rightClicked">
+<code class="descname">rightClicked</code><a class="headerlink" href="#tile.Tile.rightClicked" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.setMine">
+<code class="descname">setMine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.setMine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the state of the button. Called if the tile was left clicked for the first time</p>
+<p>Args:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
 
 </div>
 
