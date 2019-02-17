@@ -39,15 +39,16 @@
 <dl class="class">
 <dt id="game.Game">
 <em class="property">class </em><code class="descclassname">game.</code><code class="descname">Game</code><span class="sig-paren">(</span><em>rows</em>, <em>cols</em>, <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#game.Game" title="Permalink to this definition">¶</a></dt>
-<dd><p>Summary line.</p>
-<p>Extended description of function.</p>
+<dd><p>The Game window that is opened on submission of menuWindow</p>
+<p>Contains a board widget and a timer widget</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>rows</strong> (<em>int</em>) – Description of rows</li>
-<li><strong>cols</strong> (<em>int</em>) – Description of cols</li>
+<li><strong>rows</strong> (<em>int</em>) – Number of rows for the board</li>
+<li><strong>cols</strong> (<em>int</em>) – Number of columns for the board</li>
+<li><strong>count</strong> (<em>int</em>) – Number of mines for the board</li>
 </ul>
 </td>
 </tr>
@@ -56,23 +57,15 @@
 <dl class="method">
 <dt id="game.Game.initTimerWidget">
 <code class="descname">initTimerWidget</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#game.Game.initTimerWidget" title="Permalink to this definition">¶</a></dt>
-<dd><p>Summary line.</p>
-<p>Extended description of function.</p>
+<dd><p>Initializes the widget that contains the timer label and the timer information</p>
+<p>Makes a QLabel to display text and encapsulates it in a widget</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>arg1</strong> (<em>int</em>) – Description of arg1</li>
-<li><strong>arg2</strong> (<em>str</em>) – Description of arg2</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The timer widget</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Description of return value</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">QWidget</td>
 </tr>
 </tbody>
 </table>
@@ -81,48 +74,19 @@
 <dl class="method">
 <dt id="game.Game.restartGame">
 <code class="descname">restartGame</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#game.Game.restartGame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Summary line.</p>
-<p>Extended description of function.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>arg1</strong> (<em>int</em>) – Description of arg1</li>
-<li><strong>arg2</strong> (<em>str</em>) – Description of arg2</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Description of return value</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Called when restart button is clicked. Reopens the menu</p>
+<p>Imports the MenuWindow class to open, Instantiates it, and tells the application to show it. Closes game window shortly after.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="game.Game.showEndGameButtons">
 <code class="descname">showEndGameButtons</code><span class="sig-paren">(</span><em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#game.Game.showEndGameButtons" title="Permalink to this definition">¶</a></dt>
-<dd><p>Summary line.</p>
-<p>Extended description of function.</p>
+<dd><p>Displays the restart button, whether the player won or lost and stops the timer</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>arg1</strong> (<em>int</em>) – Description of arg1</li>
-<li><strong>arg2</strong> (<em>str</em>) – Description of arg2</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Description of return value</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>result</strong> (<em>str</em>) – win or lose depending on the result of the game</td>
 </tr>
 </tbody>
 </table>
@@ -131,51 +95,15 @@
 <dl class="method">
 <dt id="game.Game.startTimer">
 <code class="descname">startTimer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#game.Game.startTimer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Summary line.</p>
-<p>Extended description of function.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>arg1</strong> (<em>int</em>) – Description of arg1</li>
-<li><strong>arg2</strong> (<em>str</em>) – Description of arg2</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Description of return value</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Makes and starts the timer</p>
+<p>Instantiates a QTimer and a QTime. QTime is the value of the time set and QTimer gets started to call the time function every 1000ms</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="game.Game.time">
 <code class="descname">time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#game.Game.time" title="Permalink to this definition">¶</a></dt>
-<dd><p>Summary line.</p>
-<p>Extended description of function.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>arg1</strong> (<em>int</em>) – Description of arg1</li>
-<li><strong>arg2</strong> (<em>str</em>) – Description of arg2</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Description of return value</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Increments the timer by 1 second</p>
+<p>Adds 1 second to the QTime and updates the QLabel with the new time</p>
 </dd></dl>
 
 </dd></dl>

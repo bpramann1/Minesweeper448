@@ -169,14 +169,14 @@ class Board(QWidget):
                 else:
                     self.flip(i,j)
     def win(self):
-        """Called when game is won, flips all tiles and emits endGame signal which is caught it Game class
+        """Called when game is won, flips all tiles and emits endGame signal which is caught in Game class
 
         """
         self.flipAll(True)
         self.endGame.emit('won')
 
     def lose(self):
-        """Called when game is lost, flips all tiles and emits endGame signal which is caught it Game class
+        """Called when game is lost, flips all tiles and emits endGame signal which is caught in Game class
 
         """
         self.flipAll(False)
