@@ -133,8 +133,7 @@
 <dl class="method">
 <dt id="board.Board.lose">
 <code class="descname">lose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.lose" title="Permalink to this definition">¶</a></dt>
-<dd><p>Called when game is lost, flips all tiles and sets gamestate to lost</p>
-<p>(Idk if sets gamestate is the right phrase there, might want to change it)</p>
+<dd><p>Called when game is lost, flips all tiles and emits endGame signal which is caught it Game class</p>
 </dd></dl>
 
 <dl class="method">
@@ -152,7 +151,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>startingPoint</strong> (<em>IDK</em>) – location of the first click</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Int</strong><strong>)</strong> (<em>(</em><em>Int</em><em>,</em>) – row and column of first tile clicked</td>
 </tr>
 </tbody>
 </table>
@@ -161,8 +160,7 @@
 <dl class="method">
 <dt id="board.Board.win">
 <code class="descname">win</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.win" title="Permalink to this definition">¶</a></dt>
-<dd><p>Called when game is won, flips all tiles and sets gamestate to won</p>
-<p>(Idk if sets gamestate is the right phrase there, might want to change it)</p>
+<dd><p>Called when game is won, flips all tiles and emits endGame signal which is caught it Game class</p>
 </dd></dl>
 
 </dd></dl>
