@@ -102,15 +102,14 @@ class Board(QWidget):
     def flip( self, i, j ):
         """Flips tile at passed location
 
-        (What does flipping consist of? Might want to make this more specific.)
-        (I have no idea about how returns work, leaving that for someone else to fill in)
+        Checks where the the passed tile can be flipped and if so flip. If no mines 1 block away from indices passed, flip adjacent tiles.
 
         Args:
             i (int): row of tile to flip
             j (str): col of tile to flip
 
         Returns:
-            TYPE: DESCRIPTION
+            bool: True if tile was flipped, false if not able to flip tile
 
         """
         # reveal tile and set temp to return value, True if flipped False if not
