@@ -1,8 +1,10 @@
 import sys
 import random
+import math
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from tile import Tile
+
 
 
 class Board(QWidget):
@@ -24,6 +26,7 @@ class Board(QWidget):
         self.tiles = []
         self.mineIndices = []
         self.mineCount = count
+        self.minesSet = False
         self.minesFound = 0
         self.lost = False
         self.active = True
@@ -39,8 +42,6 @@ class Board(QWidget):
                 self.tiles[i][j].rightClicked.connect( self.rightClickHandler )
                 self.boardLayout.addWidget( self.tiles[i][j], j, i )
 
-        # assign tiles to be mines
-        self.setMines( count )
 
         self.boardLayout.setSpacing(0)
         self.boardLayout.setContentsMargins(0, 0, 0, 0)
@@ -56,19 +57,28 @@ class Board(QWidget):
                     indices.append( (i, j) )
         return indices
 
-    def setMines( self, count ):
+    def setMines(self, startingPoint):
+        spacing = 0.15
+        handicapModifier = 0
         n = 0
-        while n < count:
+        print(startingPoint[0])
+        while n < self.mineCount:
             i = random.randint( 0, self.rows - 1 )
             j = random.randint( 0, self.cols - 1 )
+            placementRandom = random.uniform( 0, 1)
+            placementChance =  1-(spacing/(self.rows*self.cols))*math.sqrt(math.pow(i-startingPoint[0], 2)+math.pow(j-startingPoint[1],2))*(1+handicapModifier)
+            print(placementChance)
             if not self.tiles[i][j].isMine():
-                self.tiles[i][j].setMine()
-                self.mineIndices.append( (i, j) )
-                print( "Setting mine at: %d, %d" % (i, j) )
-                # increment the mine count on neighboring tiles
-                for (y, x) in self.getNeighbors( i, j ):
-                  self.tiles[y][x].incCount()
-                n += 1
+                if placementRandom > placementChance:
+                    self.tiles[i][j].setMine()
+                    self.mineIndices.append( (i, j) )
+                    print( "Setting mine at: %d, %d" % (i, j) )
+                    # increment the mine count on neighboring tiles
+                    for (y, x) in self.getNeighbors( i, j ):
+                      self.tiles[y][x].incCount()
+                    n += 1
+                else:
+                    handicapModifier += 1/(spacing*(self.rows*self.cols))
         self.minesSet = True
 
     # returns True if Tile successfully flips, False if Tile is already flipped
@@ -88,8 +98,11 @@ class Board(QWidget):
         return temp
 
     def leftClickHandler(self):
+
         sender = self.sender()
         (i, j) = sender.getIndices()
+        if not self.minesSet:
+            self.setMines((i,j))
         print( "Click detected at %d, %d" % (i, j) )
         temp = self.flip( i, j )
         if not temp:
