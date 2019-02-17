@@ -101,12 +101,16 @@ class Tile(QPushButton):
                 self.setIcon(self.flagIcon)
                 self.flagged = True
                 if self.isMine():
-                    return 1;
+                    return 1
+                else:
+                    return .1
         else:
             self.setIcon(self.noIcon)
             self.flagged = False
             if self.isMine():
-                return -1;
+                return -1
+            else:
+                return -.1
         return 0;
 
     def mousePressEvent(self, event):

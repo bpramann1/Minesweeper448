@@ -28,7 +28,8 @@ class Game(QWidget):
         self.count = count
         self.startTimer()
         self.layout.addWidget(self.initTimerWidget())   #Executes the initTimerWidget and adds it to the main widget
-        self.board = Board(self.rows, self.cols, self.count)
+        self.board = Board(self.rows, self.cols, self.count, self)
+        self.board.endGame.connect(self.showEndGameButtons)
         self.layout.addWidget(self.board)
 
     def initTimerWidget(self):  #Initializes a timer widget which has a horizontal box layout and adds a buttona dn label
@@ -48,3 +49,16 @@ class Game(QWidget):
     def time(self): #Function that gets called by the 1000ms timer event
         self.time = self.time.addSecs(1)
         self.timerLabel.setText('Time: ' + str(self.time.toString('mm:ss')))
+
+    def showEndGameButtons(self, result):
+        self.resultLabel = QLabel('You %s' % result)
+        self.restartButton  = QPushButton('Resart')
+        self.restartButton.clicked.connect(self.restartGame)
+        self.layout.addWidget(self.resultLabel)
+        self.layout.addWidget(self.restartButton)
+
+    def restartGame(self):
+        from menuWindow import MenuWindow
+        self.menu = MenuWindow()
+        self.menu.show()
+        self.close()

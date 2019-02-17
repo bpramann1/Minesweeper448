@@ -15,7 +15,8 @@ class Board(QWidget):
         cols (int): Number of columns
         count (int) : Number of Mines
     """
-    def __init__( self, rows, cols, count ):
+    endGame = pyqtSignal(str)
+    def __init__( self, rows, cols, count, parent = None ):
         super().__init__()
 
         self.rows = rows
@@ -94,7 +95,7 @@ class Board(QWidget):
         if not temp:
             print( "Unable to flip already visibile tile" )
         if self.tiles[i][j].isMine():
-            print( "Mine uncovered" )
+            self.lose()
 
     def rightClickHandler(self):
         sender = self.sender()
@@ -103,13 +104,21 @@ class Board(QWidget):
         if self.minesFound == self.mineCount:
             self.win()
 
-    def flipAll(self):
+    def flipAll(self, won):
         for i in range( 0, self.rows):
             for j in range( 0, self.cols):
-                if not self.tiles[i][j].isMine():
+                if won:
+                    if not self.tiles[i][j].isMine():
+                        self.flip(i,j)
+                else:
                     self.flip(i,j)
     def win(self):
-        self.flipAll()
+        self.flipAll(True)
         print('You won')
+        self.endGame.emit('won')
+    def lose(self):
+        self.flipAll(False)
+        print('You lost')
+        self.endGame.emit('lost')
 
 
