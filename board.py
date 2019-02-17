@@ -128,14 +128,7 @@ class Board(QWidget):
     def leftClickHandler(self):
         """Run with a tile is left clicked, calls various functions based on gamestate and state of tile
 
-        (Not sure about how we should denote no returns but a change of program state)
-
-        Args:
-            arg1 (int): Description of arg1
-            arg2 (str): Description of arg2
-
-        Returns:
-            bool: Description of return value
+        Attempts to flip the tile clicked on. If it was a mine proceed to lose state and if not call flip.
 
         """
         sender = self.sender()
@@ -152,14 +145,7 @@ class Board(QWidget):
     def rightClickHandler(self):
         """Run with a tile is right clicked, calls various functions based on gamestate and state of tile
 
-        (Same as leftclick, not sure how we want to denote a change of gamestate but no return)
-
-        Args:
-            arg1 (int): Description of arg1
-            arg2 (str): Description of arg2
-
-        Returns:
-            bool: Description of return value
+        Flag the tile clicked and if only all mines have been flagged proceed to win state
 
         """
         sender = self.sender()
