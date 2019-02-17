@@ -39,15 +39,21 @@ class MenuWindow(QWidget):
             colC = int(self.colInput.text())
             mineC = int(self.mineInput.text())
             if rowC < 2 or colC < 2:
-                raise ValueError("Input dimensions must be 2 or larger.")
-            if mineC < 1 or mineC > rowC * colC:
-                raise ValueError("Mine count must be between 1 and the number of rows * the number of columns")
+                raise ValueError("INVALID_DIM")
+            if mineC < 1 or mineC > rowC * colC - 1:
+                raise ValueError("INVALID_MINE")
             self.game = Game(rowC, colC, mineC)
             self.game.show()
             self.close()
         except ValueError as err:
-            print("Invalid input detected. Row and column dimensions must be larger than 2, and mine count must be between 1 and the number of rows * the number of colunms.")
-
+            if err.args[0] == "INVALID_DIM":
+                msg = "Row and column dimensions must be larger than 2."
+            elif err.args[0] == "INVALID_MINE":
+                msg = "Mine count must be between 1 and the product of the number of rows and columns."
+            else:
+                msg = "Invalid input."
+            QMessageBox.about(self, "Invalid Input Detected", msg)
+     
     def setForm(self):
         """(Not sure about this one, looks like its setting up the board before that screen is loaded maybe?)
 
