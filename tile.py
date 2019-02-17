@@ -15,6 +15,7 @@ class Tile(QPushButton):
         j (int): The column of the tile
     """
     rightClicked = pyqtSignal()
+    """ NEED DESCRIPTION FOR WHAT THIS IS """
     def __init__( self, i, j ):
         super().__init__()
 
@@ -31,16 +32,40 @@ class Tile(QPushButton):
         self.flagged = False
 
     def getIndices( self ):
+        """Returns row and col location of the tile
+
+        Returns:
+            (RETURN TYPE): row and col of the tile
+
+        """
         return ( self.row, self.col )
 
     def getCount(self):
+        """Returns number of mines in surrounding 8 neighbor tiles
+
+        Returns:
+            int: count of near by mines
+
+        """
         return self.count
 
     def incCount(self):
+        """Increments near by mine count by 1
+
+        Returns:
+            bool: always True
+
+        """
         self.count += 1
         return True
 
     def setMine(self):
+        """Attempts to place mine on tile.
+
+        Returns:
+            bool: false if tile is already a mine, true otherwise
+
+        """
         if self.mine:
             return False
         else:
@@ -48,12 +73,16 @@ class Tile(QPushButton):
             return True
 
     def isMine(self):
+        """Returns if tile is a mine
+
+        Returns:
+            bool: true if tile is a mine, false otherwise
+
+        """
         return self.mine
 
     def flip(self):
         """Checks whether the tile has already been click and if not call update()
-
-        Args:
 
         Returns:
             bool: False if already clicked, True if not
@@ -67,8 +96,6 @@ class Tile(QPushButton):
 
     def update(self):
         """Updates the state of the button. Called if the tile was left clicked for the first time
-
-        Args:
 
         Returns:
             None: None
@@ -92,18 +119,21 @@ class Tile(QPushButton):
         return None
 
     def isFlipped(self):
+        """Returns if tile has been flipped
+
+        Returns:
+            bool: true if already flipped, false otherwise
+
+        """
         return self.visible
 
     def flagMine(self):
         """Toggles the flag on the tile.
 
-        Args:
-
         Returns:
             Int: The number to increment the number of mines found, 1 if mine flagged, -1 if mine unflagged, 0 if not a mine
 
         """
-
         if not self.flagged:
             if not self.isFlipped():
                 self.setIcon(self.flagIcon)
@@ -125,13 +155,7 @@ class Tile(QPushButton):
         """Is called natively by buttons on mouse press.
 
         Emits a rightClicked signal on right click and calls the normal QPushButton event system
-
-        Args:
-
-        Returns:
-
         """
         if event.button() == Qt.RightButton:
             self.rightClicked.emit()
         QPushButton.mousePressEvent(self,event)
-
