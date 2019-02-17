@@ -57,7 +57,8 @@ class Board(QWidget):
         return indices
 
     def setMines( self, count ):
-        for n in range( 0, count ):
+        n = 0
+        while n < count:
             i = random.randint( 0, self.rows - 1 )
             j = random.randint( 0, self.cols - 1 )
             if not self.tiles[i][j].isMine():
@@ -67,7 +68,7 @@ class Board(QWidget):
                 # increment the mine count on neighboring tiles
                 for (y, x) in self.getNeighbors( i, j ):
                   self.tiles[y][x].incCount()
-
+                n += 1
         self.minesSet = True
 
     # returns True if Tile successfully flips, False if Tile is already flipped
