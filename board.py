@@ -126,7 +126,7 @@ class Board(QWidget):
         return temp
 
     def leftClickHandler(self):
-        """Run with a tile is left clicked, calls various functions based on gamestate and state of tile
+        """Run when a tile is left clicked, calls various functions based on gamestate and state of tile
 
         Attempts to flip the tile clicked on. If it was a mine proceed to lose state and if not call flip.
 
