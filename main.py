@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import sys
 from menuWindow import MenuWindow
 from PyQt5.QtCore import *
@@ -11,4 +13,5 @@ def main():
     menu.show() #Displays the main widget
     sys.exit(app.exec_()) #Tells the app to run the main loop
 
-main()
+if __name__ == '__main__':
+    main()
