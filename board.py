@@ -58,27 +58,25 @@ class Board(QWidget):
         return indices
 
     def setMines(self, startingPoint):
-        spacing = 0.15
+        spacing = 0.05
         handicapModifier = 0
         n = 0
         print(startingPoint[0])
         while n < self.mineCount:
             i = random.randint( 0, self.rows - 1 )
             j = random.randint( 0, self.cols - 1 )
-            placementRandom = random.uniform( 0, 1)
-            placementChance =  1-(spacing/(self.rows*self.cols))*math.sqrt(math.pow(i-startingPoint[0], 2)+math.pow(j-startingPoint[1],2))*(1+handicapModifier)
-            print(placementChance)
+            placementRandom = random.uniform(0, 1)
+            placementChance =  1-(1/spacing)*math.pow(math.sqrt(math.pow(i-startingPoint[0], 2)+math.pow(j-startingPoint[1],2))/(math.sqrt(math.pow(self.rows, 2)+math.pow(self.cols,2))),2)*(1+handicapModifier)
             if not self.tiles[i][j].isMine():
                 if placementRandom > placementChance:
                     self.tiles[i][j].setMine()
                     self.mineIndices.append( (i, j) )
-                    print( "Setting mine at: %d, %d" % (i, j) )
                     # increment the mine count on neighboring tiles
                     for (y, x) in self.getNeighbors( i, j ):
                       self.tiles[y][x].incCount()
                     n += 1
                 else:
-                    handicapModifier += 1/(spacing*(self.rows*self.cols))
+                    handicapModifier += 1/(100*self.mineCount)
         self.minesSet = True
 
     # returns True if Tile successfully flips, False if Tile is already flipped

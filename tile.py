@@ -77,10 +77,18 @@ class Tile(QPushButton):
             self.flagMine()
         if self.mine:
             self.setText( "M" )
-            self.setProperty('class', 'revealed')
+            self.setProperty('class', 'revealedMine')
             self.setStyle(self.style()) #Updates tile to use the correct styling
+
         else:
-            self.setText( "%d" % self.count )
+            g = max(min(1-self.count/4, 0.75), 0)*200
+            r = max(min((self.count/4) - 1, 0.75), 0)*200
+            b = (200-g-r)
+            if self.count > 0:
+                self.setText( "%d" % self.count )
+            self.setProperty('class', 'revealed')
+            self.setStyleSheet(self.styleSheet() + "Tile{color: rgb(%s, %s, %s);}" % (r,g,b))
+            self.setStyle(self.style()) #Updates tile to use the correct styling
         return None
 
     def isFlipped(self):
