@@ -35,7 +35,7 @@ class MenuWindow(QWidget):
             mineC = int(self.mineInput.text())
             if rowC < 2 or colC < 2:
                 raise ValueError("INVALID_DIM")
-            if mineC < 1 or mineC > rowC * colC:
+            if mineC < 1 or mineC > rowC * colC - 1:
                 raise ValueError("INVALID_MINE")
             self.game = Game(rowC, colC, mineC)
             self.game.show()
