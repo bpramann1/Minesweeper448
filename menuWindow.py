@@ -5,13 +5,10 @@ from game import Game
 from PyQt5.QtGui import QIntValidator
 
 class MenuWindow(QWidget):
-    """Summary line.
+    """The original menu that pops up on launch
 
-    Extended description of function.
+    Takes input for rows, columns, and number of mines to be on board and opens a board with those values.
 
-    Args:
-        rows (int): Description of rows
-        cols (int): Description of cols
     """
     def __init__(self):
         super().__init__()
@@ -27,7 +24,9 @@ class MenuWindow(QWidget):
     def gamestart(self):
         """Collects user input needed to start game, bound-checks user supplied values
 
-        (No args or returns, does this need more explination?)
+        Is called on click of okButton. Reads the values from the input fields
+        and checks to see if they are within bounds. Rows and columns must be
+        greater than 2 and number of mines must be less than rows*columns
 
         """
         # Collect user input, pass it through the integer parser. Raises exceptions on
@@ -53,18 +52,13 @@ class MenuWindow(QWidget):
             else:
                 msg = "Invalid input."
             QMessageBox.about(self, "Invalid Input Detected", msg)
-     
+
     def setForm(self):
-        """(Not sure about this one, looks like its setting up the board before that screen is loaded maybe?)
+        """Initial setup for fields on menu
 
-        Extended description of function.
-
-        Args:
-            arg1 (int): Description of arg1
-            arg2 (str): Description of arg2
-
-        Returns:
-            bool: Description of return value
+        Makes a QLineEdit for rows, columns, and mines. Limits input to only
+        integers. Makes a QPushButton for the okButton and hooks it to
+        gamestart()
 
         """
         inputWidget = QWidget()
