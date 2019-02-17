@@ -73,7 +73,7 @@ class Board(QWidget):
         """Populates board with mines
 
         Args:
-            startingPoint (IDK): location of the first click
+            (Int, Int): row and column of first tile clicked
 
         """
         spacing = 0.05
@@ -169,18 +169,14 @@ class Board(QWidget):
                 else:
                     self.flip(i,j)
     def win(self):
-        """Called when game is won, flips all tiles and sets gamestate to won
-
-        (Idk if sets gamestate is the right phrase there, might want to change it)
+        """Called when game is won, flips all tiles and emits endGame signal which is caught it Game class
 
         """
         self.flipAll(True)
         self.endGame.emit('won')
 
     def lose(self):
-        """Called when game is lost, flips all tiles and sets gamestate to lost
-
-        (Idk if sets gamestate is the right phrase there, might want to change it)
+        """Called when game is lost, flips all tiles and emits endGame signal which is caught it Game class
 
         """
         self.flipAll(False)

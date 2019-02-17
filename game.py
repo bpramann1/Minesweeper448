@@ -5,13 +5,14 @@ from PyQt5.QtCore import *
 from board import Board
 
 class Game(QWidget):
-    """Summary line.
+    """The Game window that is opened on submission of menuWindow
 
-    Extended description of function.
+    Contains a board widget and a timer widget
 
     Args:
-        rows (int): Description of rows
-        cols (int): Description of cols
+        rows (int): Number of rows for the board
+        cols (int): Number of columns for the board
+        count (int): Number of mines for the board
     """
     def __init__(self,rows,cols,count):
         super().__init__()
@@ -33,16 +34,14 @@ class Game(QWidget):
         self.layout.addWidget(self.board)
 
     def initTimerWidget(self):  #Initializes a timer widget which has a horizontal box layout and adds a buttona dn label
-        """Summary line.
+        """Initializes the widget that contains the timer label and the timer information
 
-        Extended description of function.
+        Makes a QLabel to display text and encapsulates it in a widget
 
-        Args:
-            arg1 (int): Description of arg1
-            arg2 (str): Description of arg2
+
 
         Returns:
-            bool: Description of return value
+            QWidget: The timer widget
 
         """
         timerWidget = QWidget()
@@ -53,16 +52,9 @@ class Game(QWidget):
         return timerWidget
 
     def startTimer(self):   #Connected to the start timer button, initializes a QTime to be decreased and makes a timer event that occurs every 1000 ms
-        """Summary line.
+        """Makes and starts the timer
 
-        Extended description of function.
-
-        Args:
-            arg1 (int): Description of arg1
-            arg2 (str): Description of arg2
-
-        Returns:
-            bool: Description of return value
+        Instantiates a QTimer and a QTime. QTime is the value of the time set and QTimer gets started to call the time function every 1000ms
 
         """
         self.timer = QTimer(self)
@@ -71,32 +63,19 @@ class Game(QWidget):
         self.timer.start(1000)
 
     def time(self): #Function that gets called by the 1000ms timer event
-        """Summary line.
+        """Increments the timer by 1 second
 
-        Extended description of function.
-
-        Args:
-            arg1 (int): Description of arg1
-            arg2 (str): Description of arg2
-
-        Returns:
-            bool: Description of return value
+        Adds 1 second to the QTime and updates the QLabel with the new time
 
         """
         self.time = self.time.addSecs(1)
         self.timerLabel.setText('Time: ' + str(self.time.toString('mm:ss')))
 
     def showEndGameButtons(self, result):
-        """Summary line.
-
-        Extended description of function.
+        """Displays the restart button, whether the player won or lost and stops the timer
 
         Args:
-            arg1 (int): Description of arg1
-            arg2 (str): Description of arg2
-
-        Returns:
-            bool: Description of return value
+            result (str): win or lose depending on the result of the game
 
         """
         self.timer.timeout.disconnect()
@@ -108,16 +87,9 @@ class Game(QWidget):
         self.layout.addWidget(self.restartButton)
 
     def restartGame(self):
-        """Summary line.
+        """Called when restart button is clicked. Reopens the menu
 
-        Extended description of function.
-
-        Args:
-            arg1 (int): Description of arg1
-            arg2 (str): Description of arg2
-
-        Returns:
-            bool: Description of return value
+        Imports the MenuWindow class to open, Instantiates it, and tells the application to show it. Closes game window shortly after.
 
         """
         from menuWindow import MenuWindow
