@@ -18,7 +18,7 @@ class Game(QWidget):
 
         self.setWindowTitle('Minesweeper')  #Sets title of main QWidget
         self.setGeometry(300, 300, 250, 150)    #Sets size of window
-
+        self.setStyleSheet(StyleSheet)
         self.layout = QVBoxLayout(self) #Implements a vertical blox layout
 
         self.setLayout(self.layout) #Adds layout to main widget

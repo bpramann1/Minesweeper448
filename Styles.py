@@ -1,12 +1,18 @@
 StyleSheet = """
-QPushButton{
+Tile{
     border: 1px solid black;
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 30px;
 }
-QPushButton:hover {
-    background-color: blue;
+Tile:hover {
+    background-color: lightGrey;
+}
+.revealed {
+    background-color: red;
 }
 
+.revealed:hover {
+    background-color: red;
+}
 
 """

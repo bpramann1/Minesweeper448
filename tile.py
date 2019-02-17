@@ -1,5 +1,4 @@
 import sys
-from Styles import StyleSheet
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5 import QtGui
@@ -23,7 +22,7 @@ class Tile(QPushButton):
         self.noIcon = QtGui.QIcon()
         self.setIcon(self.noIcon)
 
-        self.setStyleSheet("border: 1px solid black; height: 35px; width: 30px;")
+
         self.row = i
         self.col = j
         self.count = 0
@@ -74,11 +73,12 @@ class Tile(QPushButton):
         Returns:
             None: None
         """
-        if not self.visible:
-            self.setText("?")
-        elif self.mine:
+        if self.flagged:
+            self.flagMine()
+        if self.mine:
             self.setText( "M" )
-            self.setStyleSheet("border: 1px solid black; height: 35px; width: 30px; background-color: red;")
+            self.setProperty('class', 'revealed')
+            self.setStyle(self.style()) #Updates tile to use the correct styling
         else:
             self.setText( "%d" % self.count )
         return None
@@ -95,11 +95,13 @@ class Tile(QPushButton):
             Int: The number to increment the number of mines found, 1 if mine flagged, -1 if mine unflagged, 0 if not a mine
 
         """
+
         if not self.flagged:
-            self.setIcon(self.flagIcon)
-            self.flagged = True
-            if self.isMine():
-                return 1;
+            if not self.isFlipped():
+                self.setIcon(self.flagIcon)
+                self.flagged = True
+                if self.isMine():
+                    return 1;
         else:
             self.setIcon(self.noIcon)
             self.flagged = False
