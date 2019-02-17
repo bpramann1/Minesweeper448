@@ -40,7 +40,7 @@ class Board(QWidget):
                 self.tiles[i].append( Tile(i, j) )
                 self.tiles[i][j].clicked.connect( self.leftClickHandler )
                 self.tiles[i][j].rightClicked.connect( self.rightClickHandler )
-                self.boardLayout.addWidget( self.tiles[i][j], j, i )
+                self.boardLayout.addWidget( self.tiles[i][j], i, j )
 
 
         self.boardLayout.setSpacing(0)
