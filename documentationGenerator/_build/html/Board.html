@@ -126,26 +126,8 @@
 <dl class="method">
 <dt id="board.Board.leftClickHandler">
 <code class="descname">leftClickHandler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.leftClickHandler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run with a tile is left clicked, calls various functions based on gamestate and state of tile</p>
-<p>(Not sure about how we should denote no returns but a change of program state)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>arg1</strong> (<em>int</em>) – Description of arg1</li>
-<li><strong>arg2</strong> (<em>str</em>) – Description of arg2</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Description of return value</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Run when a tile is left clicked, calls various functions based on gamestate and state of tile</p>
+<p>Attempts to flip the tile clicked on. If it was a mine proceed to lose state and if not call flip.</p>
 </dd></dl>
 
 <dl class="method">
@@ -159,25 +141,7 @@
 <dt id="board.Board.rightClickHandler">
 <code class="descname">rightClickHandler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.rightClickHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run with a tile is right clicked, calls various functions based on gamestate and state of tile</p>
-<p>(Same as leftclick, not sure how we want to denote a change of gamestate but no return)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>arg1</strong> (<em>int</em>) – Description of arg1</li>
-<li><strong>arg2</strong> (<em>str</em>) – Description of arg2</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Description of return value</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
-</tr>
-</tbody>
-</table>
+<p>Flag the tile clicked and if only all mines have been flagged proceed to win state</p>
 </dd></dl>
 
 <dl class="method">
