@@ -33,6 +33,18 @@ class Game(QWidget):
         self.layout.addWidget(self.board)
 
     def initTimerWidget(self):  #Initializes a timer widget which has a horizontal box layout and adds a buttona dn label
+        """Summary line.
+
+        Extended description of function.
+
+        Args:
+            arg1 (int): Description of arg1
+            arg2 (str): Description of arg2
+
+        Returns:
+            bool: Description of return value
+
+        """
         timerWidget = QWidget()
         timerLayout = QHBoxLayout()
         self.timerLabel = QLabel('Time: 00:00')
@@ -41,16 +53,52 @@ class Game(QWidget):
         return timerWidget
 
     def startTimer(self):   #Connected to the start timer button, initializes a QTime to be decreased and makes a timer event that occurs every 1000 ms
+        """Summary line.
+
+        Extended description of function.
+
+        Args:
+            arg1 (int): Description of arg1
+            arg2 (str): Description of arg2
+
+        Returns:
+            bool: Description of return value
+
+        """
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.time)
         self.time = QTime(0,0,0,0)
         self.timer.start(1000)
 
     def time(self): #Function that gets called by the 1000ms timer event
+        """Summary line.
+
+        Extended description of function.
+
+        Args:
+            arg1 (int): Description of arg1
+            arg2 (str): Description of arg2
+
+        Returns:
+            bool: Description of return value
+
+        """
         self.time = self.time.addSecs(1)
         self.timerLabel.setText('Time: ' + str(self.time.toString('mm:ss')))
 
     def showEndGameButtons(self, result):
+        """Summary line.
+
+        Extended description of function.
+
+        Args:
+            arg1 (int): Description of arg1
+            arg2 (str): Description of arg2
+
+        Returns:
+            bool: Description of return value
+
+        """
         self.timer.timeout.disconnect()
         self.board.setEnabled(False)
         self.resultLabel = QLabel('You %s' % result)
@@ -60,6 +108,18 @@ class Game(QWidget):
         self.layout.addWidget(self.restartButton)
 
     def restartGame(self):
+        """Summary line.
+
+        Extended description of function.
+
+        Args:
+            arg1 (int): Description of arg1
+            arg2 (str): Description of arg2
+
+        Returns:
+            bool: Description of return value
+
+        """
         from menuWindow import MenuWindow
         self.menu = MenuWindow()
         self.menu.show()

@@ -64,8 +64,7 @@
 <dt id="board.Board.flip">
 <code class="descname">flip</code><span class="sig-paren">(</span><em>i</em>, <em>j</em><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.flip" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flips tile at passed location</p>
-<p>(What does flipping consist of? Might want to make this more specific.)
-(I have no idea about how returns work, leaving that for someone else to fill in)</p>
+<p>Checks where the the passed tile can be flipped and if so flip. If no mines 1 block away from indices passed, flip adjacent tiles.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -76,10 +75,10 @@
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">DESCRIPTION</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if tile was flipped, false if not able to flip tile</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">TYPE</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
 </td>
 </tr>
 </tbody>

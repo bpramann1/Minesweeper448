@@ -25,6 +25,11 @@ class MenuWindow(QWidget):
 
 
     def gamestart(self):
+        """Collects user input needed to start game, bound-checks user supplied values
+
+        (No args or returns, does this need more explination?)
+
+        """
         # Collect user input, pass it through the integer parser. Raises exceptions on
         # empty string, dimensions less than 2, or a mine count less than 1 or greater than
         # the board's dimensions.
@@ -42,12 +47,24 @@ class MenuWindow(QWidget):
             self.close()
         except ValueError as err:
             print("Invalid input detected. Row and column dimensions must be larger than 2, and mine count must be between 1 and the number of rows * the number of colunms.")
-     
+
     def setForm(self):
+        """(Not sure about this one, looks like its setting up the board before that screen is loaded maybe?)
+
+        Extended description of function.
+
+        Args:
+            arg1 (int): Description of arg1
+            arg2 (str): Description of arg2
+
+        Returns:
+            bool: Description of return value
+
+        """
         inputWidget = QWidget()
         inputLayout = QGridLayout()
         inputWidget.setLayout(inputLayout)
-        
+
         # Prevent users from entering non-integer values into textboxes
         intValidator = QIntValidator(self)
 
