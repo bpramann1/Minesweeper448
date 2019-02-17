@@ -51,6 +51,8 @@ class Game(QWidget):
         self.timerLabel.setText('Time: ' + str(self.time.toString('mm:ss')))
 
     def showEndGameButtons(self, result):
+        self.timer.timeout.disconnect()
+        self.board.setEnabled(False)
         self.resultLabel = QLabel('You %s' % result)
         self.restartButton  = QPushButton('Resart')
         self.restartButton.clicked.connect(self.restartGame)

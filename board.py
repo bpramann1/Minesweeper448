@@ -114,11 +114,9 @@ class Board(QWidget):
                     self.flip(i,j)
     def win(self):
         self.flipAll(True)
-        print('You won')
         self.endGame.emit('won')
     def lose(self):
         self.flipAll(False)
-        print('You lost')
         self.endGame.emit('lost')
 
 
