@@ -63,3 +63,12 @@ main.py has file permissions set to be run as an executable so it is possible to
 Flag icon sourced from:
 
 [Icons8](https://icons8.com/icon/100900/empty-flag-filled) - freely used under [Creative Commons BY-ND 3.0 License](https://creativecommons.org/licenses/by-nd/3.0/)
+
+## Project Write Up
+
+MarkDown files for our project's retrospective write-up are located at:
+* [List of Meetings](https://github.com/littleg13/Minesweeper448/blob/master/documentation/MeetingLog.md)
+* [Division of Work/Responsibilities](https://github.com/littleg13/Minesweeper448/blob/master/documentation/TeamRoles.md)
+* [Challenges](https://github.com/littleg13/Minesweeper448/blob/master/documentation/Challenges.md)
+* [Unimplemented Features](https://github.com/littleg13/Minesweeper448/blob/master/documentation/UnimplementedFeatures.md)
+* [Retrospective for Future Projects](https://github.com/littleg13/Minesweeper448/blob/master/documentation/Reflection.md)
