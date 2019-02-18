@@ -72,10 +72,10 @@ class Board(QWidget):
     def setMines(self, startingPoint):
         """Populates board with mines
 
-        Mines placement is not entirely random. Mines are attempted to place at
+        Mine placement is not entirely random. Mines make an attempt to be placed at
         random and there is a chance(placementChance) to allow a mine at that
         random position. This chance to block placement value is a decreasing
-        quatratic function that will be 1 and the initial click and 0 at 5% of
+        quatratic function that will be 1 at the initial click and 0 at 5% of
         the board away from the initial click. This allows for a small working
         area and eliminates the possibility to hit a mine on first click.
 
