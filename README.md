@@ -20,7 +20,7 @@ sudo apt-get install python3 python3-pyqt
 
 
 
-On Windows, you can download the Python3 stable release at:
+On Windows and MacOS, you can download the Python3 stable release at:
 
 https://www.python.org/downloads/release/python-372/
 
@@ -31,7 +31,7 @@ python -m pip install pyqt5
 
 ### Installing
 
-Once Python3 and PyQt5 are installed, you can download the project as a .zip archive or clone the repository in the commandline with:
+Once Python3 and PyQt5 are installed, you can download the project as a .zip archive or clone the repository in the command line with:
 ```
 git clone https://github.com/littleg13/Minesweeper448.git
 ```
@@ -48,12 +48,18 @@ main.py has file permissions set to be run as an executable so it is possible to
 
 * [Python3](https://www.python.org/)
 * [PyQt5](https://pypi.org/project/PyQt5/) - Qt v5 bindings used for cross-platform GUI implementation.
+* [Sphinx](http://www.sphinx-doc.org/en/master/) - Documentation generator tool for Python.
 
 ## Authors
 
-This is where we'll link to the other github profiles
+* [Cameron Kientz](https://github.com/C256k145)
+* [Grady Wright](https://github.com/littleg13)
+* [Ian Hierl](https://github.com/IanHierl)
+* [Nick Marcuzzo](https://github.com/Cuzzo01)
 
 
 ## Acknowledgments
 
-Do we want anything here?
+Flag icon sourced from:
+
+[Icons8](https://icons8.com/icon/100900/empty-flag-filled) - freely used under [Creative Commons BY-ND 3.0 License](https://creativecommons.org/licenses/by-nd/3.0/)
