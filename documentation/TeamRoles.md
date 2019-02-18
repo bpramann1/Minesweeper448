@@ -1,0 +1,29 @@
+# Team Roles
+
+Description on how work was split between teammates
+
+Our team is comprised of four people: Nick, Grady, Ian, and Cameron. The roles
+of each member are as follows:
+* Nick:  
+   Nick was most influential in determining the design of the project, 
+   including decisions like what language and platforms to use. He was also 
+   in charge of documentation using the Sphinx, taking lead on the 
+   implementation and ensuring that all the code was well described. 
+
+* Ian:  
+   Ian was a large contributor to the project, providing the bulk of the 
+   basic back-end functionality of the game, creating the tiles, describing 
+   their behavior and interaction with the board class, along with the 
+   generation of mines on the board.  
+
+* Grady:  
+   Grady was essential in polishing the basic program into a well rounded game. 
+   After the simple functionality of the game was complete, he added win and 
+   lose situations, as well as polishing mine generation ensuring an overall 
+   more pleasant user experience.  
+
+* Cameron:  
+   Cameron did a large part of the front-end work dealing with user interaction
+   and bounds checking to ensure the program ran smoothly. He created the base
+   layout for the menu and the board classes that allowed the other members to
+   view and test their changes.
