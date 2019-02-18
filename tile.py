@@ -19,9 +19,8 @@ class Tile(QPushButton):
     def __init__( self, i, j ):
         super().__init__()
 
-        self.flagIcon = QtGui.QIcon(ICON_PATH)
-        self.noIcon = QtGui.QIcon()
-        self.setIcon(self.noIcon)
+
+
 
 
         self.row = i
@@ -136,6 +135,7 @@ class Tile(QPushButton):
         """
         if not self.flagged:
             if not self.isFlipped():
+                self.flagIcon = QtGui.QIcon(ICON_PATH)
                 self.setIcon(self.flagIcon)
                 self.flagged = True
                 if self.isMine():
@@ -143,6 +143,7 @@ class Tile(QPushButton):
                 else:
                     return -1
         else:
+            self.noIcon = QtGui.QIcon()
             self.setIcon(self.noIcon)
             self.flagged = False
             if self.isMine():
