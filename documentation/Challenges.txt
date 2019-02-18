@@ -11,7 +11,7 @@ of the team had already put in.
 The only other significant challenge we ran into was we did not have a design
 until halfway through. We had built a CLI version and a base GUI before we had
 a layout of what they files and objects would look like.
-We ended up spending the majority of our first meeting decided upon the
+We ended up spending the majority of our first meeting deciding on the
 structure of our project. This limited the amount of work any one person could
 put in before this meeting. We ended up overcoming it by sitting down and
 drawing out the design for the game.
