@@ -1,5 +1,4 @@
-We primarily communicated using a Discord server and only had two formal meetings. Since Discord is chat based, there are no specific times for when Discord ÒmeetingsÓ occurred. 
-In our Discord we also setup a channel to alert all team members when someone commits to the Github repo. 
+We primarily communicated using a Discord server and only had two formal meetings. Since Discord is chat based, there are no specific times for when Discord ÒmeetingsÓ occurred. In our Discord we also setup a channel to alert all team members when someone commits to the Github repo. 
 
 Spahr (Feb 11, 2019): 
 -> Delegated roles/tasks (GUI, game logic, documentation)
