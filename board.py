@@ -73,7 +73,7 @@ class Board(QWidget):
         """Populates board with mines
 
         Args:
-            (Int, Int): row and column of first tile clicked
+            (Int[]): row and column of first tile clicked
 
         """
         spacing = 0.05

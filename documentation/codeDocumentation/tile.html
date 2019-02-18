@@ -1,0 +1,292 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>tile &#8212; Minesweeper  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="menuWindow" href="menuWindow.html" />
+    <link rel="prev" title="game" href="game.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-tile">
+<span id="tile"></span><h1>tile<a class="headerlink" href="#module-tile" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="tile.Tile">
+<em class="property">class </em><code class="descclassname">tile.</code><code class="descname">Tile</code><span class="sig-paren">(</span><em>i</em>, <em>j</em><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tile button on the minesweeper board</p>
+<p>Holds all data about the tile</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>i</strong> (<em>int</em>) – The row of the tile</li>
+<li><strong>j</strong> (<em>int</em>) – The column of the tile</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="tile.Tile.flagMine">
+<code class="descname">flagMine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.flagMine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggles the flag on the tile.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The number to increment the number of mines found, 1 if mine flagged, -1 if mine unflagged, 0 if not a mine</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.flip">
+<code class="descname">flip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.flip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the tile has already been click and if not call update()</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">False if already clicked, True if not</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.getCount">
+<code class="descname">getCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.getCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of mines in surrounding 8 neighbor tiles</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">count of near by mines</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.getIndices">
+<code class="descname">getIndices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.getIndices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns row and col location of the tile</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">row and col of the tile</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">(RETURN TYPE)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.incCount">
+<code class="descname">incCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.incCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increments near by mine count by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">always True</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.isFlipped">
+<code class="descname">isFlipped</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.isFlipped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns if tile has been flipped</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if already flipped, false otherwise</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.isMine">
+<code class="descname">isMine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.isMine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns if tile is a mine</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if tile is a mine, false otherwise</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.mousePressEvent">
+<code class="descname">mousePressEvent</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.mousePressEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is called natively by buttons on mouse press.</p>
+<p>Emits a rightClicked signal on right click and calls the normal QPushButton event system</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tile.Tile.rightClicked">
+<code class="descname">rightClicked</code><a class="headerlink" href="#tile.Tile.rightClicked" title="Permalink to this definition">¶</a></dt>
+<dd><p>NEED DESCRIPTION FOR WHAT THIS IS</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.setMine">
+<code class="descname">setMine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.setMine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to place mine on tile.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">false if tile is already a mine, true otherwise</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="tile.Tile.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tile.Tile.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the state of the button. Called if the tile was left clicked for the first time</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Minesweeper</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="board.html">board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="game.html">game</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">tile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menuWindow.html">menuWindow</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="game.html" title="previous chapter">game</a></li>
+      <li>Next: <a href="menuWindow.html" title="next chapter">menuWindow</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Nick Marcuzzo, Ian Hierl, Grady Wright, Cameron Kientz.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/tile.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
