@@ -15,7 +15,7 @@ This project relies on both Python3 and the PyQt5 bindings for Qt v5.
 To install them on Ubuntu/Debian, open a command line and enter:
 
 ```
-sudo apt-get install python3 python3-pyqt
+sudo apt-get install python3 python3-pyqt5
 ```
 
 
