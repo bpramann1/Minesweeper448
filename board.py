@@ -122,7 +122,8 @@ class Board(QWidget):
             self.active = False
         elif self.tiles[i][j].getCount() == 0:
             for (row, col) in self.getNeighbors( i, j ):
-                self.flip( row, col )
+                if not self.tiles[row][col].isFlipped():
+                    self.flip( row, col )
         return temp
 
     def leftClickHandler(self):
