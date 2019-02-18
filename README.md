@@ -39,10 +39,10 @@ git clone https://github.com/littleg13/Minesweeper448.git
 To begin the game:
 ```
 cd /Path/To/Game/Directory/Minesweeper448
-./main.py
+./main.pyw
 ```
 
-main.py has file permissions set to be run as an executable so it is possible to run it from a GUI such as Windows File Explorer or Nautilus by double-clicking the file icon.
+main.pyw has file permissions set to be run as an executable so it is possible to run it from a GUI such as Windows File Explorer or Nautilus by double-clicking the file icon.
 
 ## Built With
 
