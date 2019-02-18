@@ -1,1 +1,26 @@
 Challenges and how they were overcome or dealt with
+
+The first challenge that our group faced was that Ian joined the group after we
+had already formed. We had to learn how to incorporate another member onto the
+team and delegate tasks effectively.
+This ended up not being a difficult challenge. As a whole team, we were able to
+delegate tasks evenly because Ian filled the role of writing the back-end which
+we had not yet started. It ended up meshing fairly well with the work the rest
+of the team had already put in.
+
+The only other significant challenge we ran into was we did not have a design
+until halfway through. We had built a CLI version and a base GUI before we had
+a layout of what they files and objects would look like.
+We ended up spending the majority of our first meeting decided upon the
+structure of our project. This limited the amount of work any one person could
+put in before this meeting. We ended up overcoming it by sitting down and
+drawing out the design for the game.
+
+One final challenge the entire group ran into was that none of the members had
+ever use PyQT before this project. PyQT was the GUI toolkit that we used for
+the entire GUI and does not have the greatest documentation because it is a
+derivative from QT for C++.
+We never really overcame this challenge, it was more of a slowing factor for
+development. This meant that every group member had to take the time to learn
+the semantics of this toolkit as we started to work on it. This was a large
+contributing factor to the delayed first week of development.
