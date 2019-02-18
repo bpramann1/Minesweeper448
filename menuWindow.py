@@ -37,7 +37,7 @@ class MenuWindow(QWidget):
             rowC = int(self.rowInput.text())
             colC = int(self.colInput.text())
             mineC = int(self.mineInput.text())
-            if rowC < 2 or colC < 2:
+            if rowC < 2 or colC < 2 or rowC > 30 or colC > 30:
                 raise ValueError("INVALID_DIM")
             if mineC < 1 or mineC > rowC * colC - 1:
                 raise ValueError("INVALID_MINE")
@@ -46,7 +46,7 @@ class MenuWindow(QWidget):
             self.close()
         except ValueError as err:
             if err.args[0] == "INVALID_DIM":
-                msg = "Row and column dimensions must be larger than 2."
+                msg = "Row and column dimensions must be larger than 2 and less than 31"
             elif err.args[0] == "INVALID_MINE":
                 msg = "Mine count must be between 1 and the product of the number of rows and columns."
             else:
