@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from game import Game
 from PyQt5.QtGui import QIntValidator
+from highScoresWindow import HighScoresWindow
 
 class MenuWindow(QWidget):
     """The original menu that pops up on launch
@@ -87,23 +88,32 @@ class MenuWindow(QWidget):
         inputLayout.addWidget(self.okButton, 2, 3)
         self.okButton.clicked.connect(self.gamestart)
 
+        self.scoresButton = QPushButton("High Scores")
+        inputLayout.addWidget(self.scoresButton, 3, 3)
+        self.scoresButton.clicked.connect(self.showHighScores)
+
+
         return inputWidget
 
-    def showMenu():
-        menubar = self.menuBar()
+    def showHighScores(self):
+        self.highScoresWindow = HighScoresWindow()
+        self.highScoresWindow.show()
+        print("In the scores button")
+
+    '''def showMenu(self):
+        menubar = QMenuBar(self)
         fileMenu = menubar.addMenu('File')
         
-        impMenu = QMenu('Import', self)
-        impAct = QAction('Import mail', self) 
-        impMenu.addAction(impAct)
+        #impMenu = QMenu('Import', self)
+        #impAct = QAction('Import mail', self) 
+        #impMenu.addAction(impAct)
         
-        newAct = QAction('New', self)        
+        newAct = QAction('High scores', self)        
         
         fileMenu.addAction(newAct)
-        fileMenu.addMenu(impMenu)
+        #fileMenu.addMenu(impMenu)
         
-        self.setGeometry(300, 300, 300, 200)
-        self.setWindowTitle('Submenu')    
+        self.setGeometry(600, 300, 300, 200)   
         self.show()
-        menubar.show()
-        fileMenu.show() 
+        menubar.show()'''
+ 
