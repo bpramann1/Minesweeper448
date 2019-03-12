@@ -95,6 +95,14 @@ class Game(QWidget):
             result (str): win or lose depending on the result of the game
 
         """
+		#Filewrite begin
+        outfile = open("scoreboard.txt", "a+")
+        if result is "win":
+            outfile.write('Game Result: Win\r\n')
+        if result is "lose":
+            outfile.write('Game Result: Lose\r\n')
+        outfile.close()
+		#filewrite end
         self.timer.timeout.disconnect()
         self.board.setEnabled(False)
         self.resultLabel = QLabel('You %s' % result)
