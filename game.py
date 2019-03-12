@@ -97,10 +97,14 @@ class Game(QWidget):
         """
 		#Filewrite begin
         outfile = open("scoreboard.txt", "a+")
-        if result is "win":
+        if result == 'won':
             outfile.write('Game Result: Win\r\n')
-        if result is "lose":
+        elif result == 'lost':
             outfile.write('Game Result: Lose\r\n')
+        else:
+            outfile.write("<write complete>")
+            outfile.write(result)
+            outfile.write("\r\n")
         outfile.close()
 		#filewrite end
         self.timer.timeout.disconnect()
