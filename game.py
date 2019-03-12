@@ -43,6 +43,12 @@ class Game(QWidget):
                 if not self.board.minesSet:
                     self.board.setMines((-1,-1))
                 self.board.cheatFlipAll()
+            if event.key() == 86:#66 is the key v
+                if not self.board.minesSet:
+                    self.board.setMines((-1,-1))
+                self.board.cheatFlipBack()
+
+
 
     def initTimerWidget(self):  #Initializes a timer widget which has a horizontal box layout and adds a buttona dn label
         """Initializes the widget that contains the timer label and the timer information
