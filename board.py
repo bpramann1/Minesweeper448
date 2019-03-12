@@ -187,6 +187,13 @@ class Board(QWidget):
                     self.tiles[i][j].cheatBombRevealed = True
                     self.tiles[i][j].displayIcon()
 
+    def cheatFlipBack(self):
+        for i in range( 0, self.rows):
+            for j in range( 0, self.cols):
+                if self.tiles[i][j].isMine():
+                    self.tiles[i][j].cheatBombRevealed = False
+                    self.tiles[i][j].displayIcon()
+
 
 
 
