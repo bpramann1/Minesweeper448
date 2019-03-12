@@ -89,6 +89,7 @@ class Game(QWidget):
             result (str): win or lose depending on the result of the game
 
         """
+        print("End game shown at " + str(self.time))
         self.timer.timeout.disconnect()
         self.board.setEnabled(False)
         self.resultLabel = QLabel('You %s' % result)
