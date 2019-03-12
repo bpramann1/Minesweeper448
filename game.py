@@ -16,7 +16,7 @@ class Game(QWidget):
         cols (int): Number of columns for the board
         count (int): Number of mines for the board
     """
-    def __init__(self,rows,cols,count):
+    def __init__(self, rows ,cols, count):
         super().__init__()
 
         self.setWindowTitle('Minesweeper')  #Sets title of main QWidget
@@ -35,7 +35,6 @@ class Game(QWidget):
         self.board.endGame.connect(self.showEndGameButtons)
         self.layout.addWidget(self.board)
 
-
     def keyPressEvent(self, event):
         if type(event) == QtGui.QKeyEvent:
             print('key pressed: %i' % event.key())
@@ -43,12 +42,6 @@ class Game(QWidget):
                 if not self.board.minesSet:
                     self.board.setMines((-1,-1))
                 self.board.cheatFlipAll()
-            if event.key() == 86:#66 is the key v
-                if not self.board.minesSet:
-                    self.board.setMines((-1,-1))
-                self.board.cheatFlipBack()
-
-
 
     def initTimerWidget(self):  #Initializes a timer widget which has a horizontal box layout and adds a buttona dn label
         """Initializes the widget that contains the timer label and the timer information
@@ -95,7 +88,6 @@ class Game(QWidget):
             result (str): win or lose depending on the result of the game
 
         """
-        print("End game shown at " + str(self.time))
         self.timer.timeout.disconnect()
         self.board.setEnabled(False)
         self.resultLabel = QLabel('You %s' % result)
