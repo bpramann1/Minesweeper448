@@ -92,7 +92,7 @@ class Game(QWidget):
         self.timer.timeout.disconnect()
         self.board.setEnabled(False)
         self.resultLabel = QLabel('You %s' % result)
-        self.restartButton  = QPushButton('Resart')
+        self.restartButton  = QPushButton('Restart')
         self.restartButton.clicked.connect(self.restartGame)
         self.layout.addWidget(self.resultLabel)
         self.layout.addWidget(self.restartButton)
