@@ -176,6 +176,19 @@ class Board(QWidget):
                         self.flip(i,j)
                 else:
                     self.flip(i,j)
+
+
+    def cheatFlipAll(self):
+        for i in range( 0, self.rows):
+            for j in range( 0, self.cols):
+                if self.tiles[i][j].isMine():
+                    self.tiles[i][j].cheatBombRevealed = True
+                    self.tiles[i][j].displayIcon()
+
+
+
+
+
     def win(self):
         """Called when game is won, flips all tiles and emits endGame signal which is caught in Game class
 

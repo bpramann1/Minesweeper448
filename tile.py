@@ -4,6 +4,8 @@ from PyQt5.QtCore import *
 from PyQt5 import QtGui
 
 ICON_PATH = 'Icons/flag'
+CHEAT_FLAGGED_ICON_PATH = 'Icons/cheatFlag'
+CHEAT_UNFLAGGED_ICON_PATH = 'Icons/cheatUnflag'
 
 class Tile(QPushButton):
     """A tile button on the minesweeper board
@@ -29,6 +31,7 @@ class Tile(QPushButton):
         self.mine = False
         self.visible = False
         self.flagged = False
+        self.cheatBombRevealed = False
 
     def getIndices( self ):
         """Returns row and col location of the tile
@@ -133,24 +136,34 @@ class Tile(QPushButton):
             Int: The number to increment the number of mines found, 1 if mine flagged, -1 if mine unflagged, 0 if not a mine
 
         """
-        if not self.flagged:
-            if not self.isFlipped():
-                self.flagIcon = QtGui.QIcon(ICON_PATH)
-                self.setIcon(self.flagIcon)
-                self.flagged = True
-                if self.isMine():
-                    return 1
-                else:
-                    return -1
+        self.flagged = not self.flagged
+        self.displayIcon()
+        if (self.isMine() and self.flagged) or (not self.flagged and not self.isMine()):
+            return 1
         else:
-            self.noIcon = QtGui.QIcon()
-            self.setIcon(self.noIcon)
-            self.flagged = False
-            if self.isMine():
-                return -1
-            else:
-                return 1
+            return -1
         return 0;
+
+    def displayIcon(self):
+        if self.flagged:
+            if (self.cheatBombRevealed and self.isMine()):
+                self.flagIcon = QtGui.QIcon(CHEAT_FLAGGED_ICON_PATH)
+            else:
+                self.flagIcon = QtGui.QIcon(ICON_PATH)
+            self.setIcon(self.flagIcon)
+        else:
+            if not self.isFlipped():
+                if (self.cheatBombRevealed and self.isMine()):
+                    self.noIcon = QtGui.QIcon(CHEAT_UNFLAGGED_ICON_PATH)
+                else:
+                    self.noIcon = QtGui.QIcon()
+                self.setIcon(self.noIcon)
+           
+        return 0;
+
+    def isFlagged(self):
+
+        return self.flagged
 
     def mousePressEvent(self, event):
         """Is called natively by buttons on mouse press.

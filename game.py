@@ -2,6 +2,8 @@ import sys
 from Styles import StyleSheet
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
+from PyQt5 import QtGui
+from PyQt5 import QtCore
 from board import Board
 
 class Game(QWidget):
@@ -32,6 +34,15 @@ class Game(QWidget):
         self.board = Board(self.rows, self.cols, self.count, self)
         self.board.endGame.connect(self.showEndGameButtons)
         self.layout.addWidget(self.board)
+
+
+    def keyPressEvent(self, event):
+        if type(event) == QtGui.QKeyEvent:
+            print('key pressed: %i' % event.key())
+            if event.key() == 66:#66 is the key b
+                if not self.board.minesSet:
+                    self.board.setMines((-1,-1))
+                self.board.cheatFlipAll()
 
     def initTimerWidget(self):  #Initializes a timer widget which has a horizontal box layout and adds a buttona dn label
         """Initializes the widget that contains the timer label and the timer information
