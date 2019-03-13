@@ -1,4 +1,5 @@
 import sys
+import os
 from Styles import StyleSheet
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -95,18 +96,9 @@ class Game(QWidget):
             result (str): win or lose depending on the result of the game
 
         """
-		#Filewrite begin
-        if result == 'won':
-            if os.path.isfile("scoreboard.txt"):
-                outfile = open("scoreboard.txt", "r")
-                filetext = outfile.readlines()
-                outfile.close()
-            else:
-                outfile = open("scoreboard.txt", "a+")
-                outfile.write("Write test")
-                outfile.close()
-		#filewrite end
         self.timer.timeout.disconnect()
+        if result == 'won':
+            self.writeScoreboard()
         self.board.setEnabled(False)
         self.resultLabel = QLabel('You %s' % result)
         self.restartButton  = QPushButton('Restart')
@@ -124,3 +116,54 @@ class Game(QWidget):
         self.menu = MenuWindow()
         self.menu.show()
         self.close()
+
+    def calculateScore(self):
+        """Uses the number of mines and the time taken to complete the game to calculate the score"""
+        timeHour = QTime.hour(self.time)
+        timeMinute = QTime.minute(self.time)
+        timeSecond = QTime.second(self.time)
+        timeScore = ( (timeHour * 3600) + (timeMinute * 60) + (timeSecond) + 2) / 2
+        mineScore = self.count * 5000
+        totalScore = int(mineScore / timeScore)
+        finalScore = str(totalScore).zfill(12)
+        return finalScore
+
+
+    def writeScoreboard(self):
+        """Updates the scoreboard with the most recent score
+        requires addition of the os library"""
+        finalScore = self.calculateScore()
+        if os.path.isfile("scoreboard.txt"):
+            infile = open("scoreboard.txt", "r")
+            filetext = infile.readlines()
+            infile.close()
+            if len(filetext) < 10:
+                outfile = open("scoreboard.txt", "a+")
+                outVal=len(filetext)
+                output = "\r\n"+str(outVal)+"."+finalScore
+                outfile.write(output)
+            else:
+                placeNumber = 10
+                for x in filetext:
+                    if int(filetext[x][2:]) < totalScore:
+                        placeNumber = x
+                        break
+                if placeNumber == 9:
+                    filetext[placeNumber] = "10."+finalScore
+                else:
+                    tempVal = filetext[placeNumber][2:]
+                    while placeNumber < 9:
+                        filetext[placeNumber] = str(placeNumber+1)+"."+finalScore
+                        placeNumber += 1
+                        finalScore = tempVal
+                        tempVal = filetext[placeNumber][2:]
+                    fileText[placeNumber] = "10."+finalScore
+                outfile = open("scoreboard.txt", "w")
+                for x in filetext:
+                    outfile.write(filetext[x])
+                outfile.close()
+        else:
+            outfile = open("scoreboard.txt", "w+")
+            outfile.write("1.")
+            outfile.write(finalScore)
+            outfile.close()
