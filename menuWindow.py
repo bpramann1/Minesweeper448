@@ -98,22 +98,4 @@ class MenuWindow(QWidget):
     def showHighScores(self):
         self.highScoresWindow = HighScoresWindow()
         self.highScoresWindow.show()
-        print("In the scores button")
-
-    '''def showMenu(self):
-        menubar = QMenuBar(self)
-        fileMenu = menubar.addMenu('File')
-        
-        #impMenu = QMenu('Import', self)
-        #impAct = QAction('Import mail', self) 
-        #impMenu.addAction(impAct)
-        
-        newAct = QAction('High scores', self)        
-        
-        fileMenu.addAction(newAct)
-        #fileMenu.addMenu(impMenu)
-        
-        self.setGeometry(600, 300, 300, 200)   
-        self.show()
-        menubar.show()'''
  
