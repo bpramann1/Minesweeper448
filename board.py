@@ -160,9 +160,10 @@ class Board(QWidget):
         """
         sender = self.sender()
         (i, j) = sender.getIndices()
-        self.minesFound += self.tiles[i][j].flagMine()
-        if self.minesFound == self.mineCount:
-            self.win()
+        if not (self.tiles[i][j].isFlipped()):
+            self.minesFound += self.tiles[i][j].flagMine()
+            if self.minesFound == self.mineCount:
+                self.win()
 
     def flipAll(self, won):
         """Flips all tiles on the board
