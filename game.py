@@ -90,8 +90,10 @@ class Game(QWidget):
 
         """
         self.timer.timeout.disconnect()
+
         if result == 'won':
-            self.writeScoreboard()
+            self.updateScoreBoard()
+
         self.board.setEnabled(False)
         self.resultLabel = QLabel('You %s' % result)
         self.restartButton  = QPushButton('Restart')
@@ -160,3 +162,52 @@ class Game(QWidget):
             outfile.write("1.")
             outfile.write(finalScore)
             outfile.close()
+
+    def calculateHighScoreIndex(self):
+        """If the current score is a high score returns the placement of the score,
+            returns -1 if the score is not a high score"""
+
+        inFile = open("scoreboard.txt", 'r')
+        currentScore = float(self.calculateScore())
+
+        scoreNumber = 0
+
+        for line in inFile:
+            scoreInFile = float(line)
+            scoreNumber += 1
+
+            if scoreInFile < currentScore:
+                return scoreNumber
+
+
+        if scoreNumber < 10:
+            return scoreNumber
+        else:
+            return -1
+
+
+    def updateScoreBoard(self):
+        highScoreIndex = self.calculateHighScoreIndex()
+
+        if highScoreIndex < 0:
+            return
+
+        inFile = open("scoreboard.txt", 'r')
+        scores = []
+        currentScore = self.calculateScore()
+
+        for line in inFile:
+            scores.append(float(line))
+
+        inFile.close()
+        outFile = open("scoreboard.txt", "w")
+
+        if highScoreIndex > -1:
+            if highScoreIndex > len(scores) -1:
+                scores.append(float(currentScore))
+            else:
+                scores[highScoreIndex] = float(currentScore)
+
+        for score in scores:
+            outFile.write(str(score))
+            outFile.write('\n')
