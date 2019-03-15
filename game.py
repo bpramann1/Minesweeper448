@@ -74,9 +74,9 @@ class Game(QWidget):
         self.timer.start(1)
 
     def time(self): #Function that gets called by the 1ms timer event
-        """Increments the timer by 1 second
+        """Increments the timer by 1 millisecond
 
-        Adds 1 second to the QTime and updates the QLabel with the new time
+        Adds 1 millisecond to the QTime and updates the QLabel with the new time
 
         """
         self.time = self.time.addMSecs(1)
