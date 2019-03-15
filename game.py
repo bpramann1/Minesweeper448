@@ -71,16 +71,17 @@ class Game(QWidget):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.time)
         self.time = QTime(0,0,0,0)
-        self.timer.start(1000)
+        self.timer.start(1)
 
-    def time(self): #Function that gets called by the 1000ms timer event
+    def time(self): #Function that gets called by the 1ms timer event
         """Increments the timer by 1 second
 
         Adds 1 second to the QTime and updates the QLabel with the new time
 
         """
-        self.time = self.time.addSecs(1)
-        self.timerLabel.setText('Time: ' + str(self.time.toString('mm:ss')))
+        self.time = self.time.addMSecs(1)
+        if QTime.msec(self.time) == 0:
+            self.timerLabel.setText('Time: ' + str(self.time.toString('mm:ss')))
 
     def showEndGameButtons(self, result):
         """Displays the restart button, whether the player won or lost and stops the timer
@@ -115,11 +116,29 @@ class Game(QWidget):
     def calculateScore(self):
         """Uses the number of mines and the time taken to complete the game to calculate the score"""
         timeHour = QTime.hour(self.time)
+        print("\r\ntimeHour = ")
+        print(timeHour)
         timeMinute = QTime.minute(self.time)
+        print("\r\ntimeMinute = ")
+        print(timeMinute)
         timeSecond = QTime.second(self.time)
-        timeScore = ( (timeHour * 3600) + (timeMinute * 60) + (timeSecond) + 2) / 2
-        mineScore = self.count * 5000
+        print("\r\ntimeSecond = ")
+        print(timeSecond)
+        timeMillisecond = QTime.msec(self.time)
+        print("\r\ntimeMillisecond = ")
+        print(timeMillisecond)
+        timeScore = ( (timeHour * 3600) + (timeMinute * 60) + (timeSecond) + (timeMillisecond/1000) + 2) / 2
+        print("\r\ntimeScore = ")
+        print(timeScore)
+        if ((self.cols * self.rows) - self.count) > 1:
+            mineScore = (self.count * self.count) * ((self.cols * self.rows) - self.count) * 500 
+        else:
+            mineScore = 0
+        print("\r\nmineScore = ")
+        print(mineScore)
         totalScore = int(mineScore / timeScore)
+        print("\r\ntotalScore = ")
+        print(totalScore)
         finalScore = str(totalScore).zfill(12)
         return finalScore
 
