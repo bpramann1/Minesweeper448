@@ -230,7 +230,6 @@ class Game(QWidget):
         count = 1
         for score in scores:
             outFile.write(str(count) + "\t\t" + names[count -1] + "\t\t" + str(score))
-            print("In write loop name is : " + self.inputWindow.name)
             outFile.write('\n')
             count += 1
 

@@ -86,7 +86,7 @@ class Board(QWidget):
         spacing = 0.05
         handicapModifier = 0
         n = 0
-        print(startingPoint[0])
+        #print(startingPoint[0])
         while n < self.mineCount:
             i = random.randint( 0, self.rows - 1 )
             j = random.randint( 0, self.cols - 1 )
@@ -143,12 +143,12 @@ class Board(QWidget):
         (i, j) = sender.getIndices()
         if not self.minesSet:
             self.setMines((i,j))
-        print( "Click detected at %d, %d" % (i, j) )
+        #print( "Click detected at %d, %d" % (i, j) )
         if self.tiles[i][j].isFlagged():
             self.minesFound += self.tiles[i][j].flagMine()
         temp = self.flip( i, j )
-        if not temp:
-            print( "Unable to flip already visibile tile" )
+        #if not temp:
+            #print( "Unable to flip already visibile tile" )
         if self.tiles[i][j].isMine():
             self.lose()
 

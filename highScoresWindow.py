@@ -14,7 +14,7 @@ class HighScoresWindow(QWidget):
 
         self.textArea = QPlainTextEdit(self)
         self.textArea.resize(500, 300)
-        self.textArea.insertPlainText("Name \t|\t Score")
+        self.textArea.insertPlainText("Place \t|\tName \t|\tScore\t|")
         self.textArea.insertPlainText('\n')
 
         inFile = open("scoreboard.txt", 'r')

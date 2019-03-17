@@ -7,7 +7,6 @@ class NameInputWindow(QDialog):
     def __init__(self):
         super().__init__()
 
-        self.isOpen = False
         self.setWindowTitle('New High Score')   #Sets title of main QWidget
         self.setGeometry(300, 300, 250, 150)    #Sets size of window
 
@@ -39,10 +38,5 @@ class NameInputWindow(QDialog):
 
     def okButtonCallback(self):
         self.name = self.textbox.text()
-        print("Name has been updated to: " + self.name)
-        self.isOpen = False
+        self.name = self.name.replace(' ', '_')
         self.hide()
-
-    def open(self):
-        self.isOpen = True
-        self.show()
