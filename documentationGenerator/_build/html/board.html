@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>board &mdash; Minesweeper  documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Minesweeper  documentation" href="index.html" />
+    <link rel="next" title="game" href="game.html" />
+    <link rel="prev" title="Welcome to Minesweeper’s documentation!" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-board">
+<span id="board"></span><h1>board<a class="headerlink" href="#module-board" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="board.Board">
+<em class="property">class </em><code class="descclassname">board.</code><code class="descname">Board</code><span class="sig-paren">(</span><em>rows</em>, <em>cols</em>, <em>count</em>, <em>parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#board.Board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object that contains a widget for the board that the user interacts with</p>
+<p>Contains functions for detecting clicks at a location, setting mine locations and changing the state of a tile</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>rows</strong> (<em>int</em>) &#8211; Number of rows</li>
+<li><strong>cols</strong> (<em>int</em>) &#8211; Number of columns</li>
+<li><strong>count</strong> (<em>int</em>) &#8211; Number of Mines</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="board.Board.cheatFlipAll">
+<code class="descname">cheatFlipAll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.cheatFlipAll" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="board.Board.cheatFlipBack">
+<code class="descname">cheatFlipBack</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.cheatFlipBack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="board.Board.endGame">
+<code class="descname">endGame</code><a class="headerlink" href="#board.Board.endGame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Communicates between game and board, emits signal on game end</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="board.Board.flip">
+<code class="descname">flip</code><span class="sig-paren">(</span><em>i</em>, <em>j</em><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.flip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flips tile at passed location</p>
+<p>Checks where the the passed tile can be flipped and if so flip. If no mines 1 block away from indices passed, flip adjacent tiles.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>i</strong> (<em>int</em>) &#8211; row of tile to flip</li>
+<li><strong>j</strong> (<em>str</em>) &#8211; col of tile to flip</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if tile was flipped, false if not able to flip tile</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="board.Board.flipAll">
+<code class="descname">flipAll</code><span class="sig-paren">(</span><em>won</em><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.flipAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flips all tiles on the board</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>won</strong> (<em>bool</em>) &#8211; true if game is won, false otherwise</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="board.Board.getNeighbors">
+<code class="descname">getNeighbors</code><span class="sig-paren">(</span><em>row</em>, <em>col</em><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.getNeighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the 8 cells surrounding the passed cell</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>row</strong> (<em>int</em>) &#8211; row of cell to find neighbor for</li>
+<li><strong>col</strong> (<em>str</em>) &#8211; column of cell to find neighbor for</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">8 row/col pairs for 8 cell neighbors</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int[]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="board.Board.leftClickHandler">
+<code class="descname">leftClickHandler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.leftClickHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run when a tile is left clicked, calls various functions based on gamestate and state of tile</p>
+<p>Attempts to flip the tile clicked on. If it was a mine proceed to lose state and if not call flip.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="board.Board.lose">
+<code class="descname">lose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.lose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when game is lost, flips all tiles and emits endGame signal which is caught in Game class</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="board.Board.rightClickHandler">
+<code class="descname">rightClickHandler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.rightClickHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run with a tile is right clicked, calls various functions based on gamestate and state of tile</p>
+<p>Flag the tile clicked and if only all mines have been flagged proceed to win state</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="board.Board.setMines">
+<code class="descname">setMines</code><span class="sig-paren">(</span><em>startingPoint</em><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.setMines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Populates board with mines</p>
+<p>Mine placement is not entirely random. Mines make an attempt to be placed at
+random and there is a chance(placementChance) to allow a mine at that
+random position. This chance to block placement value is a decreasing
+quatratic function that will be 1 at the initial click and 0 at 5% of
+the board away from the initial click. This allows for a small working
+area and eliminates the possibility to hit a mine on first click.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>(Int[])</strong> &#8211; row and column of first tile clicked</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="board.Board.win">
+<code class="descname">win</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.win" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when game is won, flips all tiles and emits endGame signal which is caught in Game class</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Minesweeper&#8217;s documentation!</a></li>
+      <li>Next: <a href="game.html" title="next chapter">game</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/board.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Nick Marcuzzo, Ian Hierl, Grady Wright, Cameron Kientz.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/board.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
