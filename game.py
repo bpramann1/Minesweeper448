@@ -38,6 +38,17 @@ class Game(QWidget):
         self.board.endGame.connect(self.showEndGameButtons)
         self.layout.addWidget(self.board)
         self.inputWindow = NameInputWindow()
+        self.cheatButton  = QPushButton('Cheat')
+        self.cheatButton.clicked.connect(self.cheatButtonClicked)
+        self.layout.addWidget(self.cheatButton)
+
+    def cheatButtonClicked(self):
+        if not self.board.minesSet:
+            self.board.setMines((-1,-1))
+        if self.cheatButton.text() == "Uncheat":
+            self.board.cheatFlipBack()              
+        else:
+            self.board.cheatFlipAll()
 
     def keyPressEvent(self, event):
         if type(event) == QtGui.QKeyEvent:
@@ -46,6 +57,11 @@ class Game(QWidget):
                 if not self.board.minesSet:
                     self.board.setMines((-1,-1))
                 self.board.cheatFlipAll()
+            if event.key() == 86:#66 is the key v
+                if not self.board.minesSet:
+                    self.board.setMines((-1,-1))
+                self.board.cheatFlipBack()
+
 
     def initTimerWidget(self):  #Initializes a timer widget which has a horizontal box layout and adds a buttona dn label
         """Initializes the widget that contains the timer label and the timer information
