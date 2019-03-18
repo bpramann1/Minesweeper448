@@ -43,6 +43,9 @@ class Game(QWidget):
         self.layout.addWidget(self.cheatButton)
 
     def cheatButtonClicked(self):
+        """
+        Called when the cheat button is pressed. Calls the cheatFlipAll method of the board object.
+        """
         if not self.board.minesSet:
             self.board.setMines((-1,-1))
         if self.cheatButton.text() == "Uncheat":
@@ -51,6 +54,10 @@ class Game(QWidget):
             self.board.cheatFlipAll()
 
     def keyPressEvent(self, event):
+        """Called when a key is pressed, shows all mine tiles
+        Args:
+            event (QtGui.QKeyEvent): Signal that contains the data on the event
+        """
         if type(event) == QtGui.QKeyEvent:
             print('key pressed: %i' % event.key())
             if event.key() == 66:#66 is the key b

@@ -183,6 +183,9 @@ class Board(QWidget):
 
 
     def cheatFlipAll(self):
+        """Called when the cheat button or key is pressed.
+
+        """
         cheatingCompleted = False
         for i in range( 0, self.rows):
             for j in range( 0, self.cols):
