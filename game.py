@@ -119,7 +119,7 @@ class Game(QWidget):
 
         if result == 'won':
             self.inputWindow.exec()
-            if self.calculateHighScoreIndex() > 0:
+            if self.calculateHighScoreIndex() >= 0:
                 self.updateScoreBoard()
 
         self.board.setEnabled(False)
@@ -203,11 +203,9 @@ class Game(QWidget):
         for line in inFile:
             listOfWords = line.split()
             scoreInFile = float(listOfWords[2])
-            scoreNumber += 1
-
             if scoreInFile < currentScore:
                 return scoreNumber
-
+            scoreNumber += 1
 
         if scoreNumber < 10:
             return scoreNumber
@@ -234,21 +232,21 @@ class Game(QWidget):
         inFile.close()
         outFile = open("scoreboard.txt", "w")
 
-        if highScoreIndex > -1:
-            if highScoreIndex > len(scores) -1:
-                scores.append(float(currentScore))
-                names.append(self.inputWindow.name)
+        
+        scores.append(float(currentScore))
+        names.append(self.inputWindow.name)
 
-            elif highScoreIndex == len(scores) -1:
-                scores[len(scores) - 1] = float(currentScore)
-                names[len(scores) - 1] = self.inputWindow.name
 
-            else:
-                for score in range(highScoreIndex, len(scores) -1):
-                    scores[score + 1] = scores[score]
 
-                scores[highScoreIndex] = float(currentScore)
-                names[highScoreIndex] = self.inputWindow.name
+        if highScoreIndex < len(scores) -1:
+            for scoreIndex in range(highScoreIndex, len(scores) -1):
+                print(scoreIndex)
+                scores[len(scores) - scoreIndex -1] = scores[len(scores) - scoreIndex - 2]
+                names[len(scores) - scoreIndex - 1] = names[len(scores) - scoreIndex - 2]
+
+        if highScoreIndex < len(scores):
+            scores[highScoreIndex] = float(currentScore)
+            names[highScoreIndex] = self.inputWindow.name
 
         count = 1
         for score in scores:
