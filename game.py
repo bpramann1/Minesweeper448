@@ -117,10 +117,9 @@ class Game(QWidget):
         """
         self.timer.timeout.disconnect()
 
-        if result == 'won':
+        if result == 'won' and self.calculateHighScoreIndex() >= 0:
             self.inputWindow.exec()
-            if self.calculateHighScoreIndex() >= 0:
-                self.updateScoreBoard()
+            self.updateScoreBoard()
 
         self.board.setEnabled(False)
         self.resultLabel = QLabel('You %s' % result)
@@ -209,7 +208,6 @@ class Game(QWidget):
 
         if scoreNumber < 10:
             return scoreNumber
-            print("score less than 9.")
         else:
             return -1
 
