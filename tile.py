@@ -167,6 +167,7 @@ class Tile(QPushButton):
     def isFlagged(self):
         """
         Returns the boolean value of the flagged property of the tile object.
+        """
         return self.flagged
 
     def mousePressEvent(self, event):
