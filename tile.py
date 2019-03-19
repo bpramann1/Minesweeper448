@@ -145,6 +145,9 @@ class Tile(QPushButton):
         return 0;
 
     def displayIcon(self):
+        """
+        Displays an icon based on the tile.flagged and tile.isflipped properties.
+        """
         if self.flagged:
             if (self.cheatBombRevealed and self.isMine()):
                 self.flagIcon = QtGui.QIcon(CHEAT_FLAGGED_ICON_PATH)
@@ -162,7 +165,9 @@ class Tile(QPushButton):
         return 0;
 
     def isFlagged(self):
-
+        """
+        Returns the boolean value of the flagged property of the tile object.
+        """
         return self.flagged
 
     def mousePressEvent(self, event):

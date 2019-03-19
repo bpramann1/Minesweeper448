@@ -39,14 +39,37 @@ class Game(QWidget):
         self.board.endGame.connect(self.showEndGameButtons)
         self.layout.addWidget(self.board)
         self.inputWindow = NameInputWindow()
+        self.cheatButton  = QPushButton('Cheat')
+        self.cheatButton.clicked.connect(self.cheatButtonClicked)
+        self.layout.addWidget(self.cheatButton)
+
+    def cheatButtonClicked(self):
+        """
+        Called when the cheat button is pressed. Calls the cheatFlipAll method of the board object.
+        """
+        if not self.board.minesSet:
+            self.board.setMines((-1,-1))
+        if self.cheatButton.text() == "Uncheat":
+            self.board.cheatFlipBack()              
+        else:
+            self.board.cheatFlipAll()
 
     def keyPressEvent(self, event):
+        """Called when a key is pressed, shows all mine tiles
+        Args:
+            event (QtGui.QKeyEvent): Signal that contains the data on the event
+        """
         if type(event) == QtGui.QKeyEvent:
             print('key pressed: %i' % event.key())
             if event.key() == 66:#66 is the key b
                 if not self.board.minesSet:
                     self.board.setMines((-1,-1))
                 self.board.cheatFlipAll()
+            if event.key() == 86:#66 is the key v
+                if not self.board.minesSet:
+                    self.board.setMines((-1,-1))
+                self.board.cheatFlipBack()
+
 
     def initTimerWidget(self):  #Initializes a timer widget which has a horizontal box layout and adds a buttona dn label
         """Initializes the widget that contains the timer label and the timer information
@@ -97,7 +120,7 @@ class Game(QWidget):
 
         if result == 'won':
             self.inputWindow.exec()
-            if self.calculateHighScoreIndex() > 0:
+            if self.calculateHighScoreIndex() >= 0:
                 self.updateScoreBoard()
 
         self.board.setEnabled(False)
@@ -181,11 +204,9 @@ class Game(QWidget):
         for line in inFile:
             listOfWords = line.split()
             scoreInFile = float(listOfWords[2])
-            scoreNumber += 1
-
             if scoreInFile < currentScore:
                 return scoreNumber
-
+            scoreNumber += 1
 
         if scoreNumber < 10:
             return scoreNumber
@@ -214,21 +235,21 @@ class Game(QWidget):
         inFile.close()
         outFile = open("scoreboard.txt", "w")
 
-        if highScoreIndex > -1:
-            if highScoreIndex > len(scores) -1:
-                scores.append(float(currentScore))
-                names.append(self.inputWindow.name)
+        
+        scores.append(float(currentScore))
+        names.append(self.inputWindow.name)
 
-            elif highScoreIndex == len(scores) -1:
-                scores[len(scores) - 1] = float(currentScore)
-                names[len(scores) - 1] = self.inputWindow.name
 
-            else:
-                for score in range(highScoreIndex, len(scores) -1):
-                    scores[score + 1] = scores[score]
 
-                scores[highScoreIndex] = float(currentScore)
-                names[highScoreIndex] = self.inputWindow.name
+        if highScoreIndex < len(scores) -1:
+            for scoreIndex in range(highScoreIndex, len(scores) -1):
+                print(scoreIndex)
+                scores[len(scores) - scoreIndex -1] = scores[len(scores) - scoreIndex - 2]
+                names[len(scores) - scoreIndex - 1] = names[len(scores) - scoreIndex - 2]
+
+        if highScoreIndex < len(scores):
+            scores[highScoreIndex] = float(currentScore)
+            names[highScoreIndex] = self.inputWindow.name
 
         count = 1
         for score in scores:

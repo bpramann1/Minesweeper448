@@ -20,11 +20,12 @@ class Board(QWidget):
     endGame = pyqtSignal(str)
     """ Communicates between game and board, emits signal on game end """
 
-    def __init__( self, rows, cols, count, parent = None ):
+    def __init__( self, rows, cols, count, parent):
         super().__init__()
 
         self.rows = rows
         self.cols = cols
+        self.parent = parent
         self.tiles = []
         self.mineIndices = []
         self.mineCount = count
@@ -182,19 +183,29 @@ class Board(QWidget):
 
 
     def cheatFlipAll(self):
+        """Called when the cheat button or key is pressed.
+
+        """
+        cheatingCompleted = False
         for i in range( 0, self.rows):
             for j in range( 0, self.cols):
                 if self.tiles[i][j].isMine():
                     self.tiles[i][j].cheatBombRevealed = True
                     self.tiles[i][j].displayIcon()
+                    cheatingCompleted = True
+        if cheatingCompleted:
+            self.parent.cheatButton.setText('Uncheat')
 
     def cheatFlipBack(self):
+        uncheatingCompleted = False
         for i in range( 0, self.rows):
             for j in range( 0, self.cols):
                 if self.tiles[i][j].isMine():
                     self.tiles[i][j].cheatBombRevealed = False
                     self.tiles[i][j].displayIcon()
-
+                    uncheatingCompleted = True
+        if uncheatingCompleted:
+            self.parent.cheatButton.setText('Cheat')
 
 
 
