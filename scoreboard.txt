@@ -1,5 +1,10 @@
-1		Adam		3333.0
-2		Terry		4444.0
-3		Jerry		3333.0
-4		rick_james		3333.0
-5		big_bubba		3333.0
+1		big_score		13071.0
+2		big_score		13071.0
+3		new_score		10909.0
+4		Unknown		10000.0
+5		Adam		3333.0
+6		Terry		4444.0
+7		Jerry		3333.0
+8		rick_james		3333.0
+9		third_score		10909.0
+10		little_score		3333.0

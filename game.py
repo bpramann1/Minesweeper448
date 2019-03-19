@@ -60,7 +60,6 @@ class Game(QWidget):
             event (QtGui.QKeyEvent): Signal that contains the data on the event
         """
         if type(event) == QtGui.QKeyEvent:
-            print('key pressed: %i' % event.key())
             if event.key() == 66:#66 is the key b
                 if not self.board.minesSet:
                     self.board.setMines((-1,-1))
@@ -210,6 +209,7 @@ class Game(QWidget):
 
         if scoreNumber < 10:
             return scoreNumber
+            print("score less than 9.")
         else:
             return -1
 
@@ -243,7 +243,6 @@ class Game(QWidget):
 
         if highScoreIndex < len(scores) -1:
             for scoreIndex in range(highScoreIndex, len(scores) -1):
-                print(scoreIndex)
                 scores[len(scores) - scoreIndex -1] = scores[len(scores) - scoreIndex - 2]
                 names[len(scores) - scoreIndex - 1] = names[len(scores) - scoreIndex - 2]
 

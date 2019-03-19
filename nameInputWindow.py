@@ -42,8 +42,12 @@ class NameInputWindow(QDialog):
     """a callback for self.okButton, Used to read the name entered into 
         self.textbox. It also converts all spaces in the name to underscores
         to make parsing easier"""
-        
+
     def okButtonCallback(self):
         self.name = self.textbox.text()
         self.name = self.name.replace(' ', '_')
+
+        if len(self.name) == 0:
+            self.name = "Unknown"
+
         self.hide()
