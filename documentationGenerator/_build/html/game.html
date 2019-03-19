@@ -72,6 +72,12 @@ returns -1 if the score is not a high score</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="game.Game.cheatButtonClicked">
+<code class="descname">cheatButtonClicked</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#game.Game.cheatButtonClicked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the cheat button is pressed. Calls the cheatFlipAll method of the board object.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="game.Game.initTimerWidget">
 <code class="descname">initTimerWidget</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#game.Game.initTimerWidget" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initializes the widget that contains the timer label and the timer information</p>
@@ -91,7 +97,15 @@ returns -1 if the score is not a high score</p>
 <dl class="method">
 <dt id="game.Game.keyPressEvent">
 <code class="descname">keyPressEvent</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#game.Game.keyPressEvent" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Called when a key is pressed, shows all mine tiles
+:param event: Signal that contains the data on the event</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="game.Game.restartGame">
