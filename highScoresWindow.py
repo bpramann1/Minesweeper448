@@ -5,6 +5,7 @@ from game import Game
 from PyQt5.QtGui import QIntValidator
 
 class HighScoresWindow(QWidget):
+    """Object that contains a widget that displays the top ten previous scores"""
 
     def __init__(self):
         super().__init__()

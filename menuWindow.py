@@ -11,6 +11,7 @@ class MenuWindow(QWidget):
     Takes input for rows, columns, and number of mines to be on board and opens a board with those values.
 
     """
+    
     def __init__(self):
         super().__init__()
 

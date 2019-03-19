@@ -19,6 +19,7 @@ class Game(QWidget):
         cols (int): Number of columns for the board
         count (int): Number of mines for the board
     """
+
     def __init__(self, rows ,cols, count):
         super().__init__()
 
@@ -193,6 +194,8 @@ class Game(QWidget):
 
 
     def updateScoreBoard(self):
+        """Updates the scoreboard with the most recent score"""
+        
         highScoreIndex = self.calculateHighScoreIndex()
 
         if highScoreIndex < 0:

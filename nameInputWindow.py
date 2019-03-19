@@ -4,6 +4,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import QIntValidator
 
 class NameInputWindow(QDialog):
+    """Object that contains a widget that allows the user to a name
+        to be associated with the new high score"""
+
     def __init__(self):
         super().__init__()
 
@@ -36,6 +39,10 @@ class NameInputWindow(QDialog):
 
         self.setLayout(self.vbox)
 
+    """a callback for self.okButton, Used to read the name entered into 
+        self.textbox. It also converts all spaces in the name to underscores
+        to make parsing easier"""
+        
     def okButtonCallback(self):
         self.name = self.textbox.text()
         self.name = self.name.replace(' ', '_')
