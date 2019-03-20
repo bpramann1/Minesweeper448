@@ -144,12 +144,9 @@ class Board(QWidget):
         (i, j) = sender.getIndices()
         if not self.minesSet:
             self.setMines((i,j))
-        #print( "Click detected at %d, %d" % (i, j) )
         if self.tiles[i][j].isFlagged():
             self.minesFound += self.tiles[i][j].flagMine()
         temp = self.flip( i, j )
-        #if not temp:
-            #print( "Unable to flip already visibile tile" )
         if self.tiles[i][j].isMine():
             self.lose()
 
