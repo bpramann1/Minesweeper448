@@ -1,13 +1,24 @@
-We primarily communicated using a Discord server and only had two formal
-meetings. Since Discord is chat based, there are no specific times for
-when Discord "meetings" occurred. In our Discord we also setup a
-channel to alert all team members when someone commits to the Github repo.
+3/11/2019
+Skype multi-call
+Brandon Pramann, Adam Soelter, Josh Vandeleuv
+Meeting outcomes:
+-Divided into teams to work on features:
+	-Custom addition decided: scoreboards.
+-Brandon and Alex working on cheat mode.
+-Josh and Adam working on scoreboards.
+-Forked Repository location established.
 
-Spahr (Feb 11, 2019):
--> Delegated roles/tasks (GUI, game logic, documentation)
--> Class hierarchy design
--> Selected documentation generator
-During class time (Feb 15, 2019):
--> Mostly used to touch base
--> Outlined what still needed to be finished before Sunday night
--> Worked on our respective tasks
+
+3/11/2019-3/18/2019
+GroupMe chatroom
+Adam Soelter, Alex King, Brandon Pramann, Josh Vandeleuv
+Meeting outcomes:
+-Bug issues raised and resolved.
+-Additional issues raised, work distributed between team members.
+
+
+3/18/2019
+In-class meeting
+Adam Soelter, Alex King, Brandon Pramann, Josh Vandeleuv
+Meeting outcomes:
+-Project finalized, no further issues raised.
