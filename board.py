@@ -130,7 +130,7 @@ class Board(QWidget):
             self.active = False
         elif self.tiles[i][j].getCount() == 0:
             for (row, col) in self.getNeighbors( i, j ):
-                if not self.tiles[row][col].isFlipped():
+                if not (self.tiles[row][col].isFlipped() or self.tiles[row][col].isFlagged() ):
                     self.flip( row, col )
         return temp
 
