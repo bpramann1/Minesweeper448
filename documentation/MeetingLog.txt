@@ -13,12 +13,29 @@ Meeting outcomes:
 GroupMe chatroom
 Adam Soelter, Alex King, Brandon Pramann, Josh Vandeleuv
 Meeting outcomes:
--Bug issues raised and resolved.
--Additional issues raised, work distributed between team members.
+- tested newly implemented cheat and uncheat functions
+- decided to add a cheat button as well as the hotkey options (b) for cheat and (v) for uncheat
+- discussed specifics of scoreboard implementation
+- pushed and bug tested scoreboard. minor issues raised and resolved
 
 
 3/18/2019
 In-class meeting
 Adam Soelter, Alex King, Brandon Pramann, Josh Vandeleuv
 Meeting outcomes:
--Project finalized, no further issues raised.
+-Project finalized, group will begin final bug testing before due date
+
+3/20/2019
+chatroom
+Adam Soelter, Alex King, Brandon Pramann, Josh Vandeleuv
+Meeting outcomes:
+- during final check of project noticed bug causing flagged tiles to be flipped and become innactive. This causes the player to no longer be able
+ to win the game and must either restart or intentionally lose the game. 
+- fixed bug on branch gitTest by modifying board.py flip() function to check for flagged tiles as well as tiles with no mines.
+this however seemed to produce unintended consequences sometimes resulting in strange behavior of game end states
+new issues: -marking all bombs and only bombs will sometimes not cause a win game to trigger.
+	    -flagging empty spaces, then flagging all bombs, then removing flagged empty spaces will not trigger winning game unless bomb spaces
+	     are unflagged then flagged again. NOTE: This did not always fix the issue, and it is difficult to say exactly what sequence of events
+	     will trigger this bug
+
+	    
